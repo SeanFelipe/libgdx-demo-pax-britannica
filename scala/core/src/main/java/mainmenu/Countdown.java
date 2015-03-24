@@ -1,11 +1,11 @@
-package de.swagner.paxbritannica.mainmenu;
+package srg.scala.paxbritannica.mainmenu;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 
-import de.swagner.paxbritannica.Resources;
+import srg.scala.paxbritannica.Resources;
 
 public class Countdown extends Sprite {
 

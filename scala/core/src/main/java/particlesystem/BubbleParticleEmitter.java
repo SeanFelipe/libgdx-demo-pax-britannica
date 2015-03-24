@@ -1,9 +1,9 @@
-package de.swagner.paxbritannica.particlesystem;
+package srg.scala.paxbritannica.particlesystem;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 
-import de.swagner.paxbritannica.Resources;
+import srg.scala.paxbritannica.Resources;
 
 public class BubbleParticleEmitter extends ParticleEmitter {
 

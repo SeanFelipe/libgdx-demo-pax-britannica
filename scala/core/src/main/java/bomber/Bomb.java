@@ -1,9 +1,9 @@
-package de.swagner.paxbritannica.bomber;
+package srg.scala.paxbritannica.bomber;
 
 import com.badlogic.gdx.math.Vector2;
 
-import de.swagner.paxbritannica.Bullet;
-import de.swagner.paxbritannica.Resources;
+import srg.scala.paxbritannica.Bullet;
+import srg.scala.paxbritannica.Resources;
 
 public class Bomb extends Bullet {
 

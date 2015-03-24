@@ -1,4 +1,4 @@
-package de.swagner.paxbritannica;
+package srg.scala.paxbritannica;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
-import de.swagner.paxbritannica.factory.FactoryProduction;
+import srg.scala.paxbritannica.factory.FactoryProduction;
 
 public class Ship extends Sprite {
 

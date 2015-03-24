@@ -1,12 +1,12 @@
-package de.swagner.paxbritannica.fighter;
+package srg.scala.paxbritannica.fighter;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 
-import de.swagner.paxbritannica.GameInstance;
-import de.swagner.paxbritannica.Resources;
-import de.swagner.paxbritannica.Ship;
+import srg.scala.paxbritannica.GameInstance;
+import srg.scala.paxbritannica.Resources;
+import srg.scala.paxbritannica.Ship;
 
 public class Fighter extends Ship {
 

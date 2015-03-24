@@ -1,4 +1,4 @@
-package de.swagner.paxbritannica;
+package srg.scala.paxbritannica;
 
 public class Constants {
 	

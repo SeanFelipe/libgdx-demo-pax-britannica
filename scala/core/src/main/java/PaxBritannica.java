@@ -1,8 +1,8 @@
-package de.swagner.paxbritannica;
+package srg.scala.paxbritannica;
 
 import com.badlogic.gdx.Game;
 
-import de.swagner.paxbritannica.mainmenu.MainMenu;
+import srg.scala.paxbritannica.mainmenu.MainMenu;
 
 public class PaxBritannica extends Game {
 	@Override 

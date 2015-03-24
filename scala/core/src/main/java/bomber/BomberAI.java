@@ -1,12 +1,12 @@
-package de.swagner.paxbritannica.bomber;
+package srg.scala.paxbritannica.bomber;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 
-import de.swagner.paxbritannica.Ship;
-import de.swagner.paxbritannica.Targeting;
-import de.swagner.paxbritannica.frigate.Frigate;
+import srg.scala.paxbritannica.Ship;
+import srg.scala.paxbritannica.Targeting;
+import srg.scala.paxbritannica.frigate.Frigate;
 
 public class BomberAI {
 	private float APPROACH_DISTANCE = 210;

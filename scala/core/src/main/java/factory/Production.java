@@ -1,4 +1,4 @@
-package de.swagner.paxbritannica.factory;
+package srg.scala.paxbritannica.factory;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -6,12 +6,12 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 
-import de.swagner.paxbritannica.Constants;
-import de.swagner.paxbritannica.GameInstance;
-import de.swagner.paxbritannica.Resources;
-import de.swagner.paxbritannica.bomber.Bomber;
-import de.swagner.paxbritannica.fighter.Fighter;
-import de.swagner.paxbritannica.frigate.Frigate;
+import srg.scala.paxbritannica.Constants;
+import srg.scala.paxbritannica.GameInstance;
+import srg.scala.paxbritannica.Resources;
+import srg.scala.paxbritannica.bomber.Bomber;
+import srg.scala.paxbritannica.fighter.Fighter;
+import srg.scala.paxbritannica.frigate.Frigate;
 
 public class Production {
 

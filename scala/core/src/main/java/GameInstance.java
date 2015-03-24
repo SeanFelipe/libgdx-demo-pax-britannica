@@ -1,4 +1,4 @@
-package de.swagner.paxbritannica;
+package srg.scala.paxbritannica;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
@@ -7,17 +7,17 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
-import de.swagner.paxbritannica.bomber.Bomb;
-import de.swagner.paxbritannica.bomber.Bomber;
-import de.swagner.paxbritannica.factory.FactoryProduction;
-import de.swagner.paxbritannica.fighter.Fighter;
-import de.swagner.paxbritannica.fighter.Laser;
-import de.swagner.paxbritannica.frigate.Frigate;
-import de.swagner.paxbritannica.frigate.Missile;
-import de.swagner.paxbritannica.particlesystem.BigBubbleParticleEmitter;
-import de.swagner.paxbritannica.particlesystem.ExplosionParticleEmitter;
-import de.swagner.paxbritannica.particlesystem.BubbleParticleEmitter;
-import de.swagner.paxbritannica.particlesystem.SparkParticleEmitter;
+import srg.scala.paxbritannica.bomber.Bomb;
+import srg.scala.paxbritannica.bomber.Bomber;
+import srg.scala.paxbritannica.factory.FactoryProduction;
+import srg.scala.paxbritannica.fighter.Fighter;
+import srg.scala.paxbritannica.fighter.Laser;
+import srg.scala.paxbritannica.frigate.Frigate;
+import srg.scala.paxbritannica.frigate.Missile;
+import srg.scala.paxbritannica.particlesystem.BigBubbleParticleEmitter;
+import srg.scala.paxbritannica.particlesystem.ExplosionParticleEmitter;
+import srg.scala.paxbritannica.particlesystem.BubbleParticleEmitter;
+import srg.scala.paxbritannica.particlesystem.SparkParticleEmitter;
 
 public class GameInstance {
 	

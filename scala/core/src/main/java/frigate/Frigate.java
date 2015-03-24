@@ -1,12 +1,12 @@
-package de.swagner.paxbritannica.frigate;
+package srg.scala.paxbritannica.frigate;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 
-import de.swagner.paxbritannica.GameInstance;
-import de.swagner.paxbritannica.Resources;
-import de.swagner.paxbritannica.Ship;
+import srg.scala.paxbritannica.GameInstance;
+import srg.scala.paxbritannica.Resources;
+import srg.scala.paxbritannica.Ship;
 
 public class Frigate extends Ship {
 
@@ -42,7 +42,7 @@ public class Frigate extends Ship {
 			break;
 		}
 		this.setOrigin(this.getWidth()/2, this.getHeight()/2);
-	}
+  }
 
 	@Override
 	public void draw(Batch batch) {

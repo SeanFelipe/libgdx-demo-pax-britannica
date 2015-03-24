@@ -1,4 +1,4 @@
-package de.swagner.paxbritannica.background;
+package srg.scala.paxbritannica.background;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 
-import de.swagner.paxbritannica.Resources;
+import srg.scala.paxbritannica.Resources;
 
 public class BackgroundFXRenderer {
 

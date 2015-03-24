@@ -1,10 +1,10 @@
-package de.swagner.paxbritannica.frigate;
+package srg.scala.paxbritannica.frigate;
 
 import com.badlogic.gdx.math.Vector2;
 
-import de.swagner.paxbritannica.GameInstance;
-import de.swagner.paxbritannica.Ship;
-import de.swagner.paxbritannica.Targeting;
+import srg.scala.paxbritannica.GameInstance;
+import srg.scala.paxbritannica.Ship;
+import srg.scala.paxbritannica.Targeting;
 
 public class MissileAI {
 	private float MAX_LIFETIME = 5; // 5 seconds to auto-destruct

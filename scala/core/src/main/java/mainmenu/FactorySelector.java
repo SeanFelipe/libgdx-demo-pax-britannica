@@ -1,4 +1,4 @@
-package de.swagner.paxbritannica.mainmenu;
+package srg.scala.paxbritannica.mainmenu;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.BoundingBox;
 
-import de.swagner.paxbritannica.Resources;
+import srg.scala.paxbritannica.Resources;
 
 public class FactorySelector extends Sprite {
 

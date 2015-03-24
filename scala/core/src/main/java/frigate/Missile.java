@@ -1,10 +1,10 @@
-package de.swagner.paxbritannica.frigate;
+package srg.scala.paxbritannica.frigate;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 
-import de.swagner.paxbritannica.Bullet;
-import de.swagner.paxbritannica.Resources;
+import srg.scala.paxbritannica.Bullet;
+import srg.scala.paxbritannica.Resources;
 
 public class Missile extends Bullet {
 

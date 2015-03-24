@@ -1,4 +1,4 @@
-package de.swagner.paxbritannica.particlesystem;
+package srg.scala.paxbritannica.particlesystem;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;

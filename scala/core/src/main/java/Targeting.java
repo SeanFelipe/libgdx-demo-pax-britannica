@@ -1,13 +1,13 @@
-package de.swagner.paxbritannica;
+package srg.scala.paxbritannica;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
-import de.swagner.paxbritannica.bomber.Bomber;
-import de.swagner.paxbritannica.factory.FactoryProduction;
-import de.swagner.paxbritannica.fighter.Fighter;
-import de.swagner.paxbritannica.frigate.Frigate;
+import srg.scala.paxbritannica.bomber.Bomber;
+import srg.scala.paxbritannica.factory.FactoryProduction;
+import srg.scala.paxbritannica.fighter.Fighter;
+import srg.scala.paxbritannica.frigate.Frigate;
 
 public class Targeting {
 

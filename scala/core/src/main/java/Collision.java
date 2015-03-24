@@ -1,4 +1,4 @@
-package de.swagner.paxbritannica;
+package srg.scala.paxbritannica;
 
 import com.badlogic.gdx.math.Intersector;
 

@@ -1,4 +1,4 @@
-package de.swagner.paxbritannica.mainmenu;
+package srg.scala.paxbritannica.mainmenu;
 
 import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Game;
@@ -16,13 +16,13 @@ import com.badlogic.gdx.math.collision.BoundingBox;
 import com.badlogic.gdx.math.collision.Ray;
 import com.badlogic.gdx.utils.Array;
 
-import de.swagner.paxbritannica.DefaultScreen;
-import de.swagner.paxbritannica.GameInstance;
-import de.swagner.paxbritannica.GameScreen;
-import de.swagner.paxbritannica.Resources;
-import de.swagner.paxbritannica.background.BackgroundFXRenderer;
-import de.swagner.paxbritannica.help.Help;
-import de.swagner.paxbritannica.settings.Settings;
+import srg.scala.paxbritannica.DefaultScreen;
+import srg.scala.paxbritannica.GameInstance;
+import srg.scala.paxbritannica.GameScreen;
+import srg.scala.paxbritannica.Resources;
+import srg.scala.paxbritannica.background.BackgroundFXRenderer;
+import srg.scala.paxbritannica.help.Help;
+import srg.scala.paxbritannica.settings.Settings;
 
 public class MainMenu extends DefaultScreen implements InputProcessor {
 	Sprite title;

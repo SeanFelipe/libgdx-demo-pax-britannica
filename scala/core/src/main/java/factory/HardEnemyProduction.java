@@ -1,14 +1,14 @@
-package de.swagner.paxbritannica.factory;
+package srg.scala.paxbritannica.factory;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 
-import de.swagner.paxbritannica.GameInstance;
-import de.swagner.paxbritannica.Ship;
-import de.swagner.paxbritannica.bomber.Bomber;
-import de.swagner.paxbritannica.fighter.Fighter;
-import de.swagner.paxbritannica.frigate.Frigate;
+import srg.scala.paxbritannica.GameInstance;
+import srg.scala.paxbritannica.Ship;
+import srg.scala.paxbritannica.bomber.Bomber;
+import srg.scala.paxbritannica.fighter.Fighter;
+import srg.scala.paxbritannica.frigate.Frigate;
 
 public class HardEnemyProduction extends FactoryProduction {
 

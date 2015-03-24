@@ -1,4 +1,4 @@
-package de.swagner.paxbritannica;
+package srg.scala.paxbritannica;
 
 import java.io.IOException;
 
@@ -19,13 +19,13 @@ import com.badlogic.gdx.math.collision.BoundingBox;
 import com.badlogic.gdx.math.collision.Ray;
 import com.badlogic.gdx.utils.Array;
 
-import de.swagner.paxbritannica.background.BackgroundFXRenderer;
-import de.swagner.paxbritannica.factory.EasyEnemyProduction;
-import de.swagner.paxbritannica.factory.FactoryProduction;
-import de.swagner.paxbritannica.factory.HardEnemyProduction;
-import de.swagner.paxbritannica.factory.MediumEnemyProduction;
-import de.swagner.paxbritannica.factory.PlayerProduction;
-import de.swagner.paxbritannica.mainmenu.MainMenu;
+import srg.scala.paxbritannica.background.BackgroundFXRenderer;
+import srg.scala.paxbritannica.factory.EasyEnemyProduction;
+import srg.scala.paxbritannica.factory.FactoryProduction;
+import srg.scala.paxbritannica.factory.HardEnemyProduction;
+import srg.scala.paxbritannica.factory.MediumEnemyProduction;
+import srg.scala.paxbritannica.factory.PlayerProduction;
+import srg.scala.paxbritannica.mainmenu.MainMenu;
 
 public class GameScreen extends DefaultScreen implements InputProcessor {
 

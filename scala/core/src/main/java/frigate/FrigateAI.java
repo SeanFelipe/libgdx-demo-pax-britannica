@@ -1,10 +1,10 @@
-package de.swagner.paxbritannica.frigate;
+package srg.scala.paxbritannica.frigate;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 
-import de.swagner.paxbritannica.Ship;
-import de.swagner.paxbritannica.Targeting;
+import srg.scala.paxbritannica.Ship;
+import srg.scala.paxbritannica.Targeting;
 
 public class FrigateAI {
 	private Vector2 target_fuzzy_pos = new Vector2();

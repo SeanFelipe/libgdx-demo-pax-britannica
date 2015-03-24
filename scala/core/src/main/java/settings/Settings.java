@@ -1,4 +1,4 @@
-package de.swagner.paxbritannica.settings;
+package srg.scala.paxbritannica.settings;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -15,11 +15,11 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.BoundingBox;
 import com.badlogic.gdx.math.collision.Ray;
 
-import de.swagner.paxbritannica.DefaultScreen;
-import de.swagner.paxbritannica.GameInstance;
-import de.swagner.paxbritannica.Resources;
-import de.swagner.paxbritannica.background.BackgroundFXRenderer;
-import de.swagner.paxbritannica.mainmenu.MainMenu;
+import srg.scala.paxbritannica.DefaultScreen;
+import srg.scala.paxbritannica.GameInstance;
+import srg.scala.paxbritannica.Resources;
+import srg.scala.paxbritannica.background.BackgroundFXRenderer;
+import srg.scala.paxbritannica.mainmenu.MainMenu;
 
 public class Settings extends DefaultScreen implements InputProcessor {
 	

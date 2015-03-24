@@ -1,4 +1,4 @@
-package de.swagner.paxbritannica.factory;
+package srg.scala.paxbritannica.factory;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
