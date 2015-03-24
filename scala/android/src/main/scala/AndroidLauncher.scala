@@ -1,7 +1,8 @@
-package srg.scala.pb
+package srg.scala.paxbritannica.android
 
 import android.os.Bundle
-import com.badlogic.gdx.backends.android._
+import com.badlogic.gdx.backends.android.{AndroidApplication, AndroidApplicationConfiguration}_
+import srg.scala.paxbritannica.PaxBritannica
 
 class Main extends AndroidApplication {
   override def onCreate(savedInstanceState: Bundle) {
@@ -11,6 +12,6 @@ class Main extends AndroidApplication {
     config.useCompass = false
     config.useWakelock = true
     config.hideStatusBar = true
-    initialize(new Scalapb, config)
+    initialize(new PaxBritannica, config)
   }
 }
