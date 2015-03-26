@@ -33,17 +33,17 @@ public class ParticleEmitter extends Sprite {
 		this.setOrigin(0,0);
 		for (int i = particles.size - 1; i >= 0; i--) {
 			Particle particle = particles.get(i);
-			if (particle.life > 0) {
+			if (particle.life() > 0) {
 				updateParticle(particle);
-				float dx = this.getWidth() / 2 * particle.scale;
-				float dy = this.getHeight() / 2 * particle.scale;
-				this.setColor(1, 1, 1, Math.max(particle.life / this.life,0));	
-				this.setScale(particle.scale);
-				this.setPosition(particle.position.x -dx, particle.position.y -dy);
-				if(!(particle.position.y -dy>=-10 && particle.position.y -dy<=10) && !(particle.position.x -dx>=-10 && particle.position.x -dx<=10)) {
+				float dx = this.getWidth() / 2 * particle.scale();
+				float dy = this.getHeight() / 2 * particle.scale();
+				this.setColor(1, 1, 1, Math.max(particle.life() / this.life,0));	
+				this.setScale(particle.scale());
+				this.setPosition(particle.position().x -dx, particle.position().y -dy);
+				if(!(particle.position().y -dy>=-10 && particle.position().y -dy<=10) && !(particle.position().x -dx>=-10 && particle.position().x -dx<=10)) {
 					super.draw(batch);
 				} else {
-					particle.life = 0;
+					particle.life_$eq(0);
 				}
 			} else {
 				particles.removeIndex(i);
@@ -56,8 +56,8 @@ public class ParticleEmitter extends Sprite {
 	private void updateParticle(Particle particle) {
 		delta = Math.min(0.06f, Gdx.graphics.getDeltaTime());
 		
-		if (particle.life > 0) {
-			particle.life -= delta;
+		if (particle.life() > 0) {
+			particle.life_$eq(particle.life() - delta);
 			particle.position.add(particle.velocity.x * delta*10,particle.velocity.y * delta*10);
 			particle.velocity.scl((float) Math.pow(damping, delta));
 			particle.scale += this.delta_scale * delta/5f;
