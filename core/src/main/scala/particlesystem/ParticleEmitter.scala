@@ -15,23 +15,25 @@ class ParticleEmitter extends Sprite {
 	var delta_scale : Float = _
 	var delta : Float = _
 
-	var particles = new Array<Particle>(false,maxParticle)
-	var freeParticles = new Pool<Particle>(maxParticle,maxParticle) {
-		override def newObject() : Particle = {
+	var particles = new Array[Particle](false,maxParticle)
+  
+	var freeParticles = new Pool[Particle](maxParticle,maxParticle) {
+		def newObject() : Particle = {
 			return new Particle()
 		}
+  }
 
 	override def draw( batch : Batch ) {
 		delta = Math.min(0.06f, Gdx.graphics.getDeltaTime())
 		
 		this.setOrigin(0,0)
 		for ( i <- particles.size to 0 by -1 ) {
-			Particle particle = particles.get(i)
+			var particle = particles.get(i)
 			if (particle.life > 0) {
 				updateParticle(particle)
 				val dx = this.getWidth() / 2 * particle.scale //Float
 				val dy = this.getHeight() / 2 * particle.scale //Float
-				this.setColor(1, 1, 1, Math.max(particle.life / this.life,0))	
+				this.setColor(1, 1, 1, Math.max(particle.life / this.life,0))	//r-g-b-a
 				this.setScale(particle.scale)
 				this.setPosition(particle.position.x -dx, particle.position.y -dy)
 				if(!(particle.position.y -dy>=-10 && particle.position.y -dy<=10) && !(particle.position.x -dx>=-10 && particle.position.x -dx<=10)) {
@@ -53,7 +55,7 @@ class ParticleEmitter extends Sprite {
 		if ( particle.life > 0 ) {
 			particle.life -= delta
 			particle.position.add(particle.velocity.x * delta*10,particle.velocity.y * delta*10)
-			particle.velocity.scl((float) Math.pow(damping, delta))
+			particle.velocity.scl(Math.pow(damping, delta).toFloat)
 			particle.scale += this.delta_scale * delta/5f
 		}
 	}
