@@ -15,24 +15,22 @@ class ParticleEmitter extends Sprite {
 	var delta_scale : Float = _
 	var delta : Float = _
 
-	Array<Particle> particles = new Array<Particle>(false,maxParticle)
-	private Pool<Particle> freeParticles = new Pool<Particle>(maxParticle,maxParticle) {
-		@Override
-		protected Particle newObject() {
+	var particles = new Array<Particle>(false,maxParticle)
+	var freeParticles = new Pool<Particle>(maxParticle,maxParticle) {
+		override def newObject() : Particle = {
 			return new Particle()
 		}
-	}
 
 	override def draw( batch : Batch ) {
 		delta = Math.min(0.06f, Gdx.graphics.getDeltaTime())
 		
 		this.setOrigin(0,0)
-		for (int i = particles.size - 1 i >= 0; i--) {
+		for ( i <- particles.size to 0 by -1 ) {
 			Particle particle = particles.get(i)
 			if (particle.life > 0) {
 				updateParticle(particle)
-				float dx = this.getWidth() / 2 * particle.scale
-				float dy = this.getHeight() / 2 * particle.scale
+				val dx = this.getWidth() / 2 * particle.scale //Float
+				val dy = this.getHeight() / 2 * particle.scale //Float
 				this.setColor(1, 1, 1, Math.max(particle.life / this.life,0))	
 				this.setScale(particle.scale)
 				this.setPosition(particle.position.x -dx, particle.position.y -dy)
@@ -49,10 +47,10 @@ class ParticleEmitter extends Sprite {
 		
 	}
 
-	private void updateParticle(Particle particle) {
+	def updateParticle( particle : Particle ) {
 		delta = Math.min(0.06f, Gdx.graphics.getDeltaTime())
 		
-		if (particle.life > 0) {
+		if ( particle.life > 0 ) {
 			particle.life -= delta
 			particle.position.add(particle.velocity.x * delta*10,particle.velocity.y * delta*10)
 			particle.velocity.scl((float) Math.pow(damping, delta))
@@ -60,7 +58,7 @@ class ParticleEmitter extends Sprite {
 		}
 	}
 	
-	public void addParticle(Vector2 position, Vector2 velocity, float life, float scale) {
+	def addParticle(position : Vector2 , velocity : Vector2 , life : Float, scale : Float) {
 	     if(particles.size>maxParticle) return
 	     if(Gdx.graphics.getFramesPerSecond()<25 && !(this instanceof ExplosionParticleEmitter)) return
 		 Particle particle = freeParticles.obtain()
