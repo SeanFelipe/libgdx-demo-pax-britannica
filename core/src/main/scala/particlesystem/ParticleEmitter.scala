@@ -5,13 +5,12 @@ import com.badlogic.gdx.graphics.g2d.{ Batch, Sprite }
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.{ Array, Pool }
 
-class ParticleEmitter extends Sprite {
-	
+class ParticleEmitter ( alife:Float = 1, adamping:Float = 1) extends Sprite {
+
+	val life = alife
+	val damping = adamping
 	val maxParticle = 500
 	var random : Vector2 = _
-	
-	val life : Float = 1
-	val damping : Float = 1
 	var delta_scale : Float = _
 	var delta : Float = _
 
@@ -21,7 +20,7 @@ class ParticleEmitter extends Sprite {
 		def newObject() : Particle = {
 			return new Particle()
 		}
-  }
+    }
 
 	override def draw( batch : Batch ) {
 		delta = Math.min(0.06f, Gdx.graphics.getDeltaTime())
@@ -36,7 +35,7 @@ class ParticleEmitter extends Sprite {
 				this.setColor(1, 1, 1, Math.max(particle.life / this.life,0))	//r-g-b-a
 				this.setScale(particle.scale)
 				this.setPosition(particle.position.x -dx, particle.position.y -dy)
-				if(!(particle.position.y -dy>=-10 && particle.position.y -dy<=10) && !(particle.position.x -dx>=-10 && particle.position.x -dx<=10)) {
+				if( ! ((particle.position.y -dy) >= -10 && (particle.position.y -dy) <= 10) && !((particle.position.x -dx) >= -10 && ( particle.position.x -dx ) <= 10)) {
 					super.draw(batch)
 				} else {
 					particle.life = 0
@@ -62,13 +61,13 @@ class ParticleEmitter extends Sprite {
 	
 	def addParticle(position : Vector2 , velocity : Vector2 , life : Float, scale : Float) {
 	     if(particles.size>maxParticle) return
-	     if(Gdx.graphics.getFramesPerSecond()<25 && !(this instanceof ExplosionParticleEmitter)) return
-		 Particle particle = freeParticles.obtain()
+	     if( Gdx.graphics.getFramesPerSecond() < 25 && ! (this.isInstanceOf[ExplosionParticleEmitter]) ) return
+		 var particle : Particle = freeParticles.obtain()
 	     particle.setup(position,velocity,life,scale)
 	     particles.add(particle)
 	}
 	
-	public void dispose() {
+	def dispose() {
 		particles.clear()
 		freeParticles.clear()
 	}
