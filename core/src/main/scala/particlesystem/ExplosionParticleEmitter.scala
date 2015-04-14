@@ -11,14 +11,14 @@ class ExplosionParticleEmitter extends ParticleEmitter(0.5f, 1f) {
 		delta_scale = 1.0f
 		set(Resources.getInstance().explosion)
 
-	def addParticle(position: Vector2 , scale: Float) {
+	def addParticle( position: Vector2 , scale: Float ) {
 		super.addParticle(position, new Vector2(0,0), life, scale)
 	}
 
-	public void addBigExplosion(Vector2 position) {
+	def addBigExplosion( position: Vector2 ) {
 		delta_scale = 5
 		addParticle(position, 0.5f)
-		Vector2 random = new Vector2(MathUtils.cos((float) ((MathUtils.random() * MathUtils.PI * 2f) * Math.sqrt(MathUtils.random()))),
+		val random = new Vector2(MathUtils.cos( ((MathUtils.random() * MathUtils.PI * 2f).toFloat * Math.sqrt(MathUtils.random()).toFloat))
 				(float) (MathUtils.sin(MathUtils.random() * MathUtils.PI * 2f) * Math.sqrt(MathUtils.random())))
 		for (int i = 1 i <= 20; ++i) {
 			Vector2 vel = new Vector2().set(random).add(random)
