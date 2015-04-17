@@ -18,87 +18,85 @@ class ExplosionParticleEmitter extends ParticleEmitter(0.5f, 1f) {
 	def addBigExplosion( position: Vector2 ) {
 		delta_scale = 5
 		addParticle(position, 0.5f)
-		val random = new Vector2(MathUtils.cos( ((MathUtils.random() * MathUtils.PI * 2f).toFloat * Math.sqrt(MathUtils.random()).toFloat))
-				(float) (MathUtils.sin(MathUtils.random() * MathUtils.PI * 2f) * Math.sqrt(MathUtils.random())))
-		for (int i = 1 i <= 20; ++i) {
-			Vector2 vel = new Vector2().set(random).add(random)
-			Vector2 velp = new Vector2().set(vel).scl(i / 20.f * 2.f)
-			Vector2 offset = new Vector2().set(random).scl(10)
+		val random = new Vector2(MathUtils.cos((MathUtils.random() * MathUtils.PI * 2f).toFloat * Math.sqrt(MathUtils.random()).toFloat), (MathUtils.sin(MathUtils.random() * MathUtils.PI * 2f) * Math.sqrt(MathUtils.random()).toFloat))
+		for (i <- 1 to 20) {
+			val vel = new Vector2().set(random).add(random)
+			val velp = new Vector2().set(vel).scl(i / 20F * 2F)
+			val offset = new Vector2().set(random).scl(10)
 			GameInstance.getInstance().sparkParticles.addLaserExplosion(new Vector2(position.x + offset.x, position.y + offset.y), velp)
 		}
-		for (int i = 1 i <= 5; ++i) {
-			Vector2 vel = new Vector2(MathUtils.random() * 2 - 1, MathUtils.random() * 2 - 1).scl(4)
-			Vector2 offset = new Vector2().set(random).scl(3)
+		for (i <- 1 to 5) {
+			val vel = new Vector2(MathUtils.random() * 2 - 1, MathUtils.random() * 2 - 1).scl(4)
+			val offset = new Vector2().set(random).scl(3)
 			GameInstance.getInstance().sparkParticles.addLaserExplosion(new Vector2(position.x + offset.x, position.y + offset.y), vel)
 		}
-		for (int i = 1 i <= 50; ++i) {
-			Vector2 offset = new Vector2().set(random).scl(17)
+		for (i <- 1 to 50) {
+			val offset = new Vector2().set(random).scl(17)
 			GameInstance.getInstance().bigBubbleParticles.addParticle(new Vector2(position.x + offset.x, position.y + offset.y))
 		}
 	}
 
-	public void addMediumExplosion(Vector2 position) {
+	def addMediumExplosion(position: Vector2) {
 		delta_scale = 3
 		addParticle(position, 0.4f)
-		Vector2 random = new Vector2(MathUtils.cos((float) ((MathUtils.random() * MathUtils.PI * 2f) * Math.sqrt(MathUtils.random()))),
-				(float) (MathUtils.sin(MathUtils.random() * MathUtils.PI * 2f) * Math.sqrt(MathUtils.random())))
-		for (int i = 1 i <= 10; ++i) {
-			Vector2 vel = new Vector2().set(random).add(random)
-			Vector2 velp = new Vector2().set(vel).scl(i / 20.f * 2.f)
-			Vector2 offset = new Vector2().set(random).scl(10)
+		val random = new Vector2(MathUtils.cos((MathUtils.random() * MathUtils.PI * 2f).toFloat * Math.sqrt(MathUtils.random()).toFloat), MathUtils.sin(MathUtils.random() * MathUtils.PI * 2f).toFloat * Math.sqrt(MathUtils.random()).toFloat);
+		for (i <- 1 to 10) {
+			val vel = new Vector2().set(random).add(random)
+			val velp = new Vector2().set(vel).scl(i / 20F * 2F)
+			val offset = new Vector2().set(random).scl(10)
 			GameInstance.getInstance().sparkParticles.addLaserExplosion(new Vector2(position.x + offset.x, position.y + offset.y), velp)
 		}
-		for (int i = 1 i <= 3; ++i) {
-			Vector2 vel = new Vector2(MathUtils.random() * 2 - 1, MathUtils.random() * 2 - 1).scl(3)
-			Vector2 offset = new Vector2().set(random).scl(3)
+		for (i <- 1 to 3) {
+			val vel = new Vector2(MathUtils.random() * 2 - 1, MathUtils.random() * 2 - 1).scl(3)
+			val offset = new Vector2().set(random).scl(3)
 			GameInstance.getInstance().sparkParticles.addLaserExplosion(new Vector2(position.x + offset.x, position.y + offset.y), vel)
 		}
-		for (int i = 1 i <= 20; ++i) {
-			Vector2 offset = new Vector2().set(random).scl(2)
+		for (i <- 1 to 20) {
+			val offset = new Vector2().set(random).scl(2)
 			GameInstance.getInstance().bigBubbleParticles.addParticle(new Vector2(position.x + offset.x, position.y + offset.y))
 		}
 	}
 
-	public void addSmallExplosion(Vector2 position) {
+	def addSmallExplosion(position: Vector2) {
 		delta_scale = 2
 		addParticle(position, 0.3f)
-		Vector2 random = new Vector2(MathUtils.cos((float) ((MathUtils.random() * MathUtils.PI * 2f) * Math.sqrt(MathUtils.random()))),
-				(float) (MathUtils.sin(MathUtils.random() * MathUtils.PI * 2f) * Math.sqrt(MathUtils.random())))
-		for (int i = 1 i <= 2; ++i) {
-			Vector2 vel = new Vector2().set(random).add(random)
-			Vector2 velp = new Vector2().set(vel).scl(i / 20.f * 2.f)
-			Vector2 offset = new Vector2().set(random).scl(10)
+        val vx = MathUtils.cos((MathUtils.random() * MathUtils.PI * 2f) * Math.sqrt(MathUtils.random()).toFloat)
+        val vy = MathUtils.sin((MathUtils.random() * MathUtils.PI * 2f) * Math.sqrt(MathUtils.random()).toFloat)
+		val random = new Vector2(vx, vy) 
+		for (i <- 1 to 2) {
+			val vel = new Vector2().set(random).add(random)
+			val velp = new Vector2().set(vel).scl(i / 20F * 2F)
+			val offset = new Vector2().set(random).scl(10)
 			GameInstance.getInstance().sparkParticles.addLaserExplosion(new Vector2(position.x + offset.x, position.y + offset.y), velp)
 		}
-		for (int i = 1 i <= 2; ++i) {
-			Vector2 vel = new Vector2(MathUtils.random() * 2 - 1, MathUtils.random() * 2 - 1).scl(2)
-			Vector2 offset = new Vector2().set(random).scl(3)
+		for (i <- 1 to 2) {
+			val vel = new Vector2(MathUtils.random() * 2 - 1, MathUtils.random() * 2 - 1).scl(2)
+			val offset = new Vector2().set(random).scl(3)
 			GameInstance.getInstance().sparkParticles.addLaserExplosion(new Vector2(position.x + offset.x, position.y + offset.y), vel)
 		}
-		for (int i = 1 i <= 10; ++i) {
-			Vector2 offset = new Vector2().set(random).scl(2)
+		for (i <- 1 to 10) {
+			val offset = new Vector2().set(random).scl(2)
 			GameInstance.getInstance().bigBubbleParticles.addParticle(new Vector2(position.x + offset.x, position.y + offset.y))
 		}
 	}
 
-	public void addTinyExplosion(Vector2 position) {
+	def addTinyExplosion(position: Vector2) {
 		delta_scale = 1
 		addParticle(position, 0.1f)
-		Vector2 random = new Vector2(MathUtils.cos((float) ((MathUtils.random() * MathUtils.PI * 2f) * Math.sqrt(MathUtils.random()))),
-				(float) (MathUtils.sin(MathUtils.random() * MathUtils.PI * 2f) * Math.sqrt(MathUtils.random())))
-		for (int i = 1 i <= 1; ++i) {
-			Vector2 vel = new Vector2().set(random).add(random)
-			Vector2 velp = new Vector2().set(vel).scl(i / 20.f * 2.f)
-			Vector2 offset = new Vector2().set(random).scl(10)
+		val random = new Vector2((MathUtils.cos(MathUtils.random() * MathUtils.PI * 2f) * Math.sqrt(MathUtils.random())).toFloat, (MathUtils.sin(MathUtils.random() * MathUtils.PI * 2f).toFloat * Math.sqrt(MathUtils.random()).toFloat))
+		for (i <- 1 to 1) {
+			val vel = new Vector2().set(random).add(random)
+			val velp = new Vector2().set(vel).scl(i / 20F * 2F)
+			val offset = new Vector2().set(random).scl(10)
 			GameInstance.getInstance().sparkParticles.addLaserExplosion(new Vector2(position.x + offset.x, position.y + offset.y), velp)
 		}
-		for (int i = 1 i <= 1; ++i) {
-			Vector2 vel = new Vector2(MathUtils.random() * 2 - 1, MathUtils.random() * 2 - 1)
-			Vector2 offset = new Vector2().set(random).scl(3)
+		for (i <- 1 to 1) {
+			val vel = new Vector2(MathUtils.random() * 2 - 1, MathUtils.random() * 2 - 1)
+			val offset = new Vector2().set(random).scl(3)
 			GameInstance.getInstance().sparkParticles.addLaserExplosion(new Vector2(position.x + offset.x, position.y + offset.y), vel)
 		}
-		for (int i = 1 i <= 5; ++i) {
-			Vector2 offset = new Vector2().set(random).scl(17)
+		for (i <- 1 to 5) {
+			val offset = new Vector2().set(random).scl(17)
 			GameInstance.getInstance().bigBubbleParticles.addParticle(new Vector2(position.x + offset.x, position.y + offset.y))
 		}
 	}
