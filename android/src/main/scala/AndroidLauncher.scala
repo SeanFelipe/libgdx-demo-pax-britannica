@@ -1,4 +1,4 @@
-package srg.scala.paxbritannica.android
+package srg.scala.paxbritannica.andr
 
 import android.os.Bundle
 import com.badlogic.gdx.backends.android.{AndroidApplication, AndroidApplicationConfiguration}
