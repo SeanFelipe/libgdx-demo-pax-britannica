@@ -1,18 +1,14 @@
-package srg.scala.pb
+package srg.scala.paxbritannica.ios
 
 import org.robovm.apple.foundation.NSAutoreleasePool
 import org.robovm.apple.uikit.UIApplication
-
-import com.badlogic.gdx.backends.iosrobovm.IOSApplication
-import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration
-
-import com.badlogic.gdx.Game
-import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.backends.iosrobovm.{IOSApplication, IOSApplicationConfiguration}
+import srg.scala.paxbritannica.PaxBritannica
 
 class Main extends IOSApplication.Delegate {
   override protected def createApplication(): IOSApplication = {
     val config = new IOSApplicationConfiguration
-    new IOSApplication(new Scalapb, config)
+    new IOSApplication(new PaxBritannica, config)
   }
 }
 
