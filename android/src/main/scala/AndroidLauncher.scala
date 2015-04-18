@@ -1,7 +1,8 @@
 package srg.scala.paxbritannica.android
 
 import android.os.Bundle
-import com.badlogic.gdx.backends.android.{AndroidApplication, AndroidApplicationConfiguration}_
+import com.badlogic.gdx.backends.android.AndroidApplication
+import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration
 import srg.scala.paxbritannica.PaxBritannica
 
 class Main extends AndroidApplication {
