@@ -1,4 +1,7 @@
 package srg.scala.paxbritannica.andr
+// https://groups.google.com/forum/#!msg/scala-on-android/9Y_7VJonwjs/ypkbO-LheJgJ
+// there seems to be a bug in the android plugin which causes TR.scala to not find android 
+// depedencies. Needed to change the package name to make it compile.
 
 import android.os.Bundle
 import com.badlogic.gdx.backends.android.{AndroidApplication, AndroidApplicationConfiguration}
