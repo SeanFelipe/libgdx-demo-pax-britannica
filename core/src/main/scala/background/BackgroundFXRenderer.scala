@@ -37,7 +37,7 @@ class BackgroundFXRenderer {
         backgroundBatch.end()
 
         backgroundFXBatch.begin()
-        for (i <- 1 to debrises.size) {
+        for (i <- 0 until debrises.size) {
             val debris = debrises.get(i)
             if (debris.alive) {
                 debris.draw(backgroundFXBatch)
@@ -46,7 +46,7 @@ class BackgroundFXRenderer {
             }
         }
 
-        for (i <- 1 to fishes.size) {
+        for (i <- 0 until fishes.size) {
             val fish = fishes.get(i)
             if (fish.alive) {
                 fish.draw(backgroundFXBatch)
