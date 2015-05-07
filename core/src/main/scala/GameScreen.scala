@@ -390,44 +390,40 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         }
     }
 
-    @Override
-    public void hide() {
-
+    override def hide() {
     }
 
-    @Override
-    public boolean keyDown(int keycode) {
+    override def keyDown(keycode: Int) : Boolean = {
         if(keycode == Input.Keys.BACK) {
             gameOver = true
             gameOverTimer=0
+        }
+
+        if(keycode == Input.Keys.ESCAPE) {
+            gameOver = true
+            gameOverTimer=0
+        }		
+
+        if(numPlayers >0 && keycode == Input.Keys.A && GameInstance.getInstance().factorys.size>0) {
+            ((FactoryProduction) GameInstance.getInstance().factorys.get(0)).button_held = true
+            touchedP1 = true
+        } 
+        if(numPlayers >1 && keycode == Input.Keys.F && GameInstance.getInstance().factorys.size>1) {
+            ((FactoryProduction) GameInstance.getInstance().factorys.get(1)).button_held = true
+            touchedP2 = true
+        } 
+        if(numPlayers >2 && keycode == Input.Keys.H && GameInstance.getInstance().factorys.size>2) {
+            ((FactoryProduction) GameInstance.getInstance().factorys.get(2)).button_held = true
+            touchedP3 = true
+        } 
+        if(numPlayers >3 && keycode == Input.Keys.L && GameInstance.getInstance().factorys.size>3) {
+            ((FactoryProduction) GameInstance.getInstance().factorys.get(3)).button_held = true
+            touchedP4 = true
+        }
+        return false
     }
 
-    if(keycode == Input.Keys.ESCAPE) {
-        gameOver = true
-        gameOverTimer=0
-    }		
-
-    if(numPlayers >0 && keycode == Input.Keys.A && GameInstance.getInstance().factorys.size>0) {
-        ((FactoryProduction) GameInstance.getInstance().factorys.get(0)).button_held = true
-        touchedP1 = true
-    } 
-    if(numPlayers >1 && keycode == Input.Keys.F && GameInstance.getInstance().factorys.size>1) {
-        ((FactoryProduction) GameInstance.getInstance().factorys.get(1)).button_held = true
-        touchedP2 = true
-    } 
-    if(numPlayers >2 && keycode == Input.Keys.H && GameInstance.getInstance().factorys.size>2) {
-        ((FactoryProduction) GameInstance.getInstance().factorys.get(2)).button_held = true
-        touchedP3 = true
-    } 
-    if(numPlayers >3 && keycode == Input.Keys.L && GameInstance.getInstance().factorys.size>3) {
-        ((FactoryProduction) GameInstance.getInstance().factorys.get(3)).button_held = true
-        touchedP4 = true
-    }
-    return false
-    }
-
-    @Override
-    public boolean keyUp(int keycode) {
+    def keyUp(keycode: Int) : Boolean = {
         if(numPlayers >0 && keycode == Input.Keys.A && GameInstance.getInstance().factorys.size>0) {
             ((FactoryProduction) GameInstance.getInstance().factorys.get(0)).button_held = false
         } 
@@ -441,16 +437,13 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
             ((FactoryProduction) GameInstance.getInstance().factorys.get(3)).button_held = false
         } 
         return false
-        }
-
-        @Override
-        public boolean keyTyped(char character) {
-            // TODO Auto-generated method stub
-            return false
     }
 
-    @Override
-    public boolean touchDown(int x, int y, int pointer, int button) {
+    def keyTyped(character: char) : Boolean = {
+        return false
+    }
+
+    def touchDown(x: Int, y: Int, pointer: Int, button: Int) : Boolean = {
         collisionRay = cam.getPickRay(x, y)
 
         if(numPlayers >0 && Intersector.intersectRayBoundsFast(collisionRay, touchAreaP1) && GameInstance.getInstance().factorys.size>0) {
@@ -474,44 +467,40 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
             touchedP4 = true
         } 
         return false
-        }
+    }
 
-        @Override
-        public boolean touchUp(int x, int y, int pointer, int button) {
-            collisionRay = cam.getPickRay(x, y)
+    override def touchUp(x: Int, y: Int, pointer: Int, button: Int) : Boolean = {
+        collisionRay = cam.getPickRay(x, y)
 
-            if(numPlayers >0 && pointer == pointerP1 && GameInstance.getInstance().factorys.size>0) {
-                ((FactoryProduction) GameInstance.getInstance().factorys.get(0)).button_held = false
-                pointerP1 = -1
-            } 
-            if(numPlayers >1 && pointer == pointerP2 &&  GameInstance.getInstance().factorys.size>1) {
-                ((FactoryProduction) GameInstance.getInstance().factorys.get(1)).button_held = false
-                pointerP2 = -1
-            } 
-            if(numPlayers >2 && pointer == pointerP3 &&  GameInstance.getInstance().factorys.size>1) {
-                ((FactoryProduction) GameInstance.getInstance().factorys.get(2)).button_held = false
-                pointerP3 = -1
-            } 
-            if(numPlayers >3 && pointer == pointerP4 &&  GameInstance.getInstance().factorys.size>1) {
-                ((FactoryProduction) GameInstance.getInstance().factorys.get(3)).button_held = false
-                pointerP4 = -1
-            } 
+        if(numPlayers >0 && pointer == pointerP1 && GameInstance.getInstance().factorys.size>0) {
+            ((FactoryProduction) GameInstance.getInstance().factorys.get(0)).button_held = false
+            pointerP1 = -1
+        } 
+        if(numPlayers >1 && pointer == pointerP2 &&  GameInstance.getInstance().factorys.size>1) {
+            ((FactoryProduction) GameInstance.getInstance().factorys.get(1)).button_held = false
+            pointerP2 = -1
+        } 
+        if(numPlayers >2 && pointer == pointerP3 &&  GameInstance.getInstance().factorys.size>1) {
+            ((FactoryProduction) GameInstance.getInstance().factorys.get(2)).button_held = false
+            pointerP3 = -1
+        } 
+        if(numPlayers >3 && pointer == pointerP4 &&  GameInstance.getInstance().factorys.size>1) {
+            ((FactoryProduction) GameInstance.getInstance().factorys.get(3)).button_held = false
+            pointerP4 = -1
+        } 
+        return false
+    }
+
+    override def touchDragged(x: Int, y: Int, pointer: Int) : Boolean = {
+        return false
+    }
+
+    override def scrolled(amount: Int) : Boolean =  {
+        return false
+    }
+
+    override def mouseMoved(screenX: Int, screenY: Int) : Boolean = {
             return false
-            }
+    }
 
-            @Override
-            public boolean touchDragged(int x, int y, int pointer) {
-                return false
-        }
-
-        @Override
-        public boolean scrolled(int amount) {
-            return false
-            }
-
-            @Override
-            public boolean mouseMoved(int screenX, int screenY) {
-                return false
-        }
-
-            }
+}
