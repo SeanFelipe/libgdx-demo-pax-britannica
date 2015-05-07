@@ -16,6 +16,9 @@ import srg.scala.paxbritannica.mainmenu.MainMenu
 class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Integer] ) 
     extends DefaultScreen ( game ) with InputProcessor {
 
+///////////////////
+// begin constructor
+
     // input
     Gdx.input.setCatchBackKey(true)
     Gdx.input.setInputProcessor(this)
@@ -88,8 +91,13 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
     Gdx.gl.glDisable(GL20.GL_DEPTH_TEST)
            
 
-////////////////////////////////////////////////////////////////////////////////
+///////////////////
 // end constructor
+
+
+
+///////////////////
+// custom methods
 
     def getBoundingBoxes (numPlayers: Int) : Array[BoundingBox] = {
 
@@ -239,10 +247,6 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         }
     }
 
-    override def resize(width: Int, height: Int) {
-        // implement this later. The bounding box logic is pretty messy.
-    }
-
     def generatePositions (n: Int) : Array[Vector2] = {
         val positions = new Array[Vector2](n)
         for (i <- 0 until n) {
@@ -253,7 +257,14 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         return positions
     }
 
-    override def show() {
+////////////////////////////
+// Android methods
+
+    override def resize(width: Int, height: Int) {
+        // implement this later. The bounding box logic is pretty messy.
+    }
+
+        override def show() {
     }
 
     override def render(delta: Float) {
