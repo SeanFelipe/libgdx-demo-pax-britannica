@@ -26,6 +26,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
     // startup stuffs
     var startTime : Double = 0
     val numPlayers = playerList.size
+    val numCpus = cpuList.size
     var gameOver = false
     var gameOverTimer = 5
     val CENTER = new Vector2(300, 180)
@@ -108,31 +109,31 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         val w12 = this.width / 2
         val h12 = this.height / 2
 
-        match (numPlayers) {
+        numPlayers match {
             case 1 => 
                 playerBoundingBoxVectors(0).set( cw, -ch, 0)
-                playerBoundingBoxVectors(1).set( cw + this.width, -ch + this.height, 0));
+                playerBoundingBoxVectors(1).set( cw + this.width, -ch + this.height, 0);
             case 2 =>
                 playerBoundingBoxVectors(0).set(-cw, -ch, 0)
                 playerBoundingBoxVectors(1).set(-cw + w12, -ch + this.height, 0)
                 playerBoundingBoxVectors(2).set(-cw + w12, -ch, 0)
-                playerBoundingBoxVectors(3).set(-cw + this.width, -ch + this.height, 0)
+                playerBoundingBoxVectors(3).set(-cw + this.width, -ch + this.height, 0);
             case 3 =>
                 playerBoundingBoxVectors(0).set(-cw, -ch, 0)
-                playerBoundingBoxVectors(1).set(-cw + w12, -ch + h12, 0));
-                playerBoundingBoxVectors(2).set(-cw, -ch + h12, 0),
-                playerBoundingBoxVectors(3).set(-cw + w12 , -ch + this.height, 0))
-                playerBoundingBoxVectors(4).set(-cw + w12, -ch, 0),
-                playerBoundingBoxVectors(5).set(-cw + this.width, -ch + this.height, 0))
+                playerBoundingBoxVectors(1).set(-cw + w12, -ch + h12, 0)
+                playerBoundingBoxVectors(2).set(-cw, -ch + h12, 0)
+                playerBoundingBoxVectors(3).set(-cw + w12 , -ch + this.height, 0)
+                playerBoundingBoxVectors(4).set(-cw + w12, -ch, 0)
+                playerBoundingBoxVectors(5).set(-cw + this.width, -ch + this.height, 0);
             case 4 =>
-                playerBoundingBoxVectors(0).set(-cw, -ch, 0),
-                playerBoundingBoxVectors(1).set(-cw + w12, -ch + h12, 0))
-                playerBoundingBoxVectors(2).set(-cw, -ch + h12), 0),
-                playerBoundingBoxVectors(3).set(-cw + w12, -ch + this.height, 0))
-                playerBoundingBoxVectors(4).set(-cw + w12, -ch, 0),
-                playerBoundingBoxVectors(5).set(-cw + this.width, -ch + h12, 0))
-                playerBoundingBoxVectors(6).set(-cw + w12, -ch + h12, 0),
-                playerBoundingBoxVectors(7).set(-cw + this.width, -ch + this.height, 0))
+                playerBoundingBoxVectors(0).set(-cw, -ch, 0)
+                playerBoundingBoxVectors(1).set(-cw + w12, -ch + h12, 0)
+                playerBoundingBoxVectors(2).set(-cw, -ch + h12, 0)
+                playerBoundingBoxVectors(3).set(-cw + w12, -ch + this.height, 0)
+                playerBoundingBoxVectors(4).set(-cw + w12, -ch, 0)
+                playerBoundingBoxVectors(5).set(-cw + this.width, -ch + h12, 0)
+                playerBoundingBoxVectors(6).set(-cw + w12, -ch + h12, 0)
+                playerBoundingBoxVectors(7).set(-cw + this.width, -ch + this.height, 0);
         }
 
         // instantiate boxes
@@ -147,12 +148,12 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         return playerBoundingBoxes
     }
 
-    def getPositions(numPlayers, numCpuPlayers) : Array[Vector2] = {
+    def getPositions : Array[Vector2] = {
         val parr = new Array[Vector2](
-            if (playerList.size + cpuList.size != 3) 4;
+            if (numPlayers + numCpus != 3) 4;
             else 3
         );
-        if (playerList.size + cpuList.size != 3) {
+        if (numPlayers + numCpus != 3) {
         // there's got to be a more elegant way to do this without specifying the condition twice
             parr(0) = (new Vector2(150, 180))
             parr(1) = (new Vector2(450, 180))
@@ -167,55 +168,55 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
     }
 
     def setPlayerSprites {
-        if(playerList.size > 0 && playerList(0) == 1) {
+        if(numPlayers > 0 && playerList(0) == 1) {
             p1 = Resources.getInstance().factoryP1Small
-        } else if(playerList.size > 0 && playerList(0) == 2) {
+        } else if(numPlayers > 0 && playerList(0) == 2) {
             p1 = Resources.getInstance().factoryP2Small
-        } else if(playerList.size > 0 && playerList(0)==3) {
+        } else if(numPlayers > 0 && playerList(0)==3) {
             p1 = Resources.getInstance().factoryP3Small
-        } else if(playerList.size>0 && playerList(0)==4) {
+        } else if(numPlayers>0 && playerList(0)==4) {
             p1 = Resources.getInstance().factoryP4Small		
         }
 
-        if(playerList.size > 1 && playerList.get(1)==1) {
+        if(numPlayers > 1 && playerList.get(1)==1) {
             p2 = Resources.getInstance().factoryP1Small
-        } else if(playerList.size > 1 && playerList(1)==2) {
+        } else if(numPlayers > 1 && playerList(1)==2) {
             p2 = Resources.getInstance().factoryP2Small
-        } else if(playerList.size > 1 && playerList(1)==3) {
+        } else if(numPlayers > 1 && playerList(1)==3) {
             p2 = Resources.getInstance().factoryP3Small
-        } else if(playerList.size > 1 && playerList(1)==4) {
+        } else if(numPlayers > 1 && playerList(1)==4) {
             p2 = Resources.getInstance().factoryP4Small		
         }
 
-        if(playerList.size > 2 && playerList.get(2)==1) {
+        if(numPlayers > 2 && playerList.get(2)==1) {
             p3 = Resources.getInstance().factoryP1Small
-        } else if(playerList.size > 2 && playerList(2)==2) {
+        } else if(numPlayers > 2 && playerList(2)==2) {
             p3 = Resources.getInstance().factoryP2Small
-        } else if(playerList.size > 2 && playerList(2)==3) {
+        } else if(numPlayers > 2 && playerList(2)==3) {
             p3 = Resources.getInstance().factoryP3Small
-        } else if(playerList.size > 2 && playerList(2)==4) {
+        } else if(numPlayers > 2 && playerList(2)==4) {
             p3 = Resources.getInstance().factoryP4Small		
         }
 
-        if(playerList.size > 3 && playerList(3) == 1) {
+        if(numPlayers > 3 && playerList(3) == 1) {
             p4 = Resources.getInstance().factoryP1Small
-        } else if(playerList.size > 3 && playerList(3) == 2) {
+        } else if(numPlayers > 3 && playerList(3) == 2) {
             p4 = Resources.getInstance().factoryP2Small
-        } else if(playerList.size > 3 && playerList(3) == 3) {
+        } else if(numPlayers > 3 && playerList(3) == 3) {
             p4 = Resources.getInstance().factoryP3Small
-        } else if(playerList.size > 3 && playerList(3) == 4) {
+        } else if(numPlayers > 3 && playerList(3) == 4) {
             p4 = Resources.getInstance().factoryP4Small		
         }
 
-        if(playerList.size > 0) p1.setScale(.2f)
-        if(playerList.size > 1) p2.setScale(.2f)
-        if(playerList.size > 2) p3.setScale(.2f)
-        if(playerList.size > 3) p4.setScale(.2f)
+        if(numPlayers > 0) p1.setScale(.2f)
+        if(numPlayers > 1) p2.setScale(.2f)
+        if(numPlayers > 2) p3.setScale(.2f)
+        if(numPlayers > 3) p4.setScale(.2f)
 
-        if(playerList.size > 0) p1.rotate(-90)
-        if(playerList.size > 1) p2.rotate(90)
-        if(playerList.size > 2) p3.rotate(-90)
-        if(playerList.size > 3) p4.rotate(90)
+        if(numPlayers > 0) p1.rotate(-90)
+        if(numPlayers > 1) p2.rotate(90)
+        if(numPlayers > 2) p3.rotate(-90)
+        if(numPlayers > 3) p4.rotate(90)
 
     }
 
@@ -226,12 +227,12 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
             val facing = new Vector2(-v1.sub(CENTER).y, v2.sub(CENTER).x).nor()
             val playerProduction = new PlayerProduction(playerList.get(i), POSITIONS.get(currentPos), facing)
             GameInstance.getInstance().factorys.add(playerProduction)
-            ++currentPos
+            currentPos = currentPos + 1
         }
     }
 
     def setEnemyProduction {
-        for(int i=0i<cpuList.size;++i) {
+        for(i <- 0 until numCpus ) {
             Vector2 temp1 = new Vector2(POSITIONS.get(currentPos).x, POSITIONS.get(currentPos).y)
             Vector2 temp2 = new Vector2(POSITIONS.get(currentPos).x, POSITIONS.get(currentPos).y)
             Vector2 facing = new Vector2(-temp1.sub(CENTER).y, temp2.sub(CENTER).x).nor()
@@ -243,7 +244,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
                 enemyProduction = new HardEnemyProduction(cpuList.get(i), POSITIONS.get(currentPos), facing)
             }
             GameInstance.getInstance().factorys.add(enemyProduction)
-            ++currentPos
+            currentPos = currentPos + 1
         }
     }
 
@@ -290,7 +291,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         }
 
         // Frigate
-        for (Ship ship : GameInstance.getInstance().frigates) {
+        for (ship <- GameInstance.getInstance().frigates) {
             if (ship.alive) {
                 ship.draw(gameBatch)
             } else {
@@ -299,7 +300,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         }
 
         // Bomber
-        for (Ship ship : GameInstance.getInstance().bombers) {
+        for (ship <- GameInstance.getInstance().bombers) {
             if (ship.alive) {
                 ship.draw(gameBatch)
             } else {
@@ -307,7 +308,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
             }
         }
         // Fighter
-        for (Ship ship : GameInstance.getInstance().fighters) {
+        for (ship <- GameInstance.getInstance().fighters) {
             if (ship.alive) {
                 ship.draw(gameBatch)
             } else {
@@ -316,7 +317,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         }
 
         // Laser
-        for (Ship ship : GameInstance.getInstance().bullets) {
+        for (ship <- GameInstance.getInstance().bullets) {
             if (ship.alive) {
                 ship.draw(gameBatch)
             } else {
