@@ -16,7 +16,6 @@ import srg.scala.paxbritannica.mainmenu.MainMenu
 class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Integer] ) 
     extends DefaultScreen ( game ) with InputProcessor {
 
-    var numPlayers = 0
     var startTime : Double = 0
     val backgroundFX = new BackgroundFXRenderer()
     var gameOver = false
@@ -46,6 +45,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
     ///////////////////////////////
     // bounding boxes
     val numPlayers = playerList.size
+    val BoundingBoxes = getBoundingBoxes(numPlayers)
     val playerBoundingBoxVectors = new Array[Vector3](numPlayers * 2)
 
     // define bounding boxes
@@ -102,11 +102,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         POSITIONS.add(new Vector2(300, 335))
     } 
 
-
-
-
-
-    BackgroundFXRenderer backgroundFX = new BackgroundFXRenderer()
+    val backgroundFX = new BackgroundFXRenderer()
 
     private float fade = 1.0f
     Sprite blackFade
@@ -171,25 +167,6 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         cam.update()
 
         numPlayers = playerList.size
-
-        if(numPlayers==1) {
-            touchAreaP1 = new BoundingBox(new Vector3(-((this.width-800)/2), -((this.height-480)/2), 0),new Vector3(-((this.width-800)/2)+(this.width), -((this.height-480)/2)+this.height, 0))
-        } else if(numPlayers == 2) {
-            touchAreaP1 = new BoundingBox(new Vector3(-((this.width-800)/2), -((this.height-480)/2), 0),new Vector3(-((this.width-800)/2)+(this.width/2), -((this.height-480)/2)+this.height, 0))
-            touchAreaP2 = new BoundingBox(new Vector3(-((this.width-800)/2)+(this.width/2), -((this.height-480)/2), 0),new Vector3(-((this.width-800)/2)+this.width, -((this.height-480)/2)+this.height, 0))
-        } else if(numPlayers == 3) {
-            touchAreaP1 = new BoundingBox(new Vector3(-((this.width-800)/2), -((this.height-480)/2), 0),new Vector3(-((this.width-800)/2)+(this.width/2), -((this.height-480)/2)+(this.height/2), 0))
-            touchAreaP2 = new BoundingBox(new Vector3(-((this.width-800)/2), -((this.height-480)/2)+(this.height/2), 0),new Vector3(-((this.width-800)/2)+(this.width/2), -((this.height-480)/2)+this.height, 0))
-            touchAreaP3 = new BoundingBox(new Vector3(-((this.width-800)/2)+(this.width/2), -((this.height-480)/2), 0),new Vector3(-((this.width-800)/2)+this.width, -((this.height-480)/2)+this.height, 0))
-        } else if(numPlayers == 4) {
-            touchAreaP1 = new BoundingBox(new Vector3(-((this.width-800)/2), -((this.height-480)/2), 0),new Vector3(-((this.width-800)/2)+(this.width/2), -((this.height-480)/2)+(this.height/2), 0))
-            touchAreaP2 = new BoundingBox(new Vector3(-((this.width-800)/2), -((this.height-480)/2)+(this.height/2), 0),new Vector3(-((this.width-800)/2)+(this.width/2), -((this.height-480)/2)+this.height, 0))
-            touchAreaP3 = new BoundingBox(new Vector3(-((this.width-800)/2)+(this.width/2), -((this.height-480)/2), 0),new Vector3(-((this.width-800)/2)+this.width, -((this.height-480)/2)+(this.height/2), 0))
-            touchAreaP4 = new BoundingBox(new Vector3(-((this.width-800)/2)+(this.width/2), -((this.height-480)/2)+(this.height/2), 0),new Vector3(-((this.width-800)/2)+this.width, -((this.height-480)/2)+this.height, 0))
-        }
-
-        //		camera = new OrthographicCamera(800, 480)
-        //		camera.translate(400, 240, 0)
 
         if(playerList.size + cpuList.size != 3) {
             POSITIONS.add(new Vector2(150, 180))
@@ -357,6 +334,16 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
             }
 
             Vector3 tmp = new Vector3()
+
+/////////////////////////////////////////////////
+// end constructor
+
+    private Array[BoundingBoxes] getBoundingBoxes (numPlayers: Int) {
+
+
+    }
+
+
 
             @Override
             public void resize(int width, int height) {
