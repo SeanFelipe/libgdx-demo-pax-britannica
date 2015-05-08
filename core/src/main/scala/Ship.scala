@@ -9,11 +9,12 @@ import srg.scala.paxbritannica.factory.FactoryProduction
 
 class Ship (iid: Int, pposition: Vector2, ffacing: Vector2, hp: Int = 0) extends Sprite() {
 
+	val id = iid
 	val amount = 1.0f
 	val turnSpeed = 1.0f
 	val accel = 0.0f
 	var hitPoints = hp
-	val maxHitPoints = 0
+	var maxHitPoints = 0
 	var delta = 0.0f
 	var aliveTime = 0.0f
 	var velocity, collisionCenter = new Vector2()
@@ -33,8 +34,6 @@ class Ship (iid: Int, pposition: Vector2, ffacing: Vector2, hp: Int = 0) extends
 	var deathCounter = 50f
 	var nextExplosion = 10f
 	var opacity = 5.0f
-
-	val id = iid
 
     this.setOrigin(this.getWidth() / 2f, this.getHeight() / 2f)
 
