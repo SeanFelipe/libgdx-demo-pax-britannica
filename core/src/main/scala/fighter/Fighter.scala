@@ -8,7 +8,7 @@ import srg.scala.paxbritannica.GameInstance
 import srg.scala.paxbritannica.Resources
 import srg.scala.paxbritannica.Ship
 
-class Fighter (id: Integer , position: Vector2 , facing: Vector2 ) 
+class Fighter (id: Int , position: Vector2 , facing: Vector2 ) 
     extends Ship (id, position, facing, 40) {
 
 	val shotCooldownTime = 6f

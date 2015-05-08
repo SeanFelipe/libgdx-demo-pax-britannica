@@ -39,7 +39,7 @@ class FactoryProduction (iid: Int , pposition: Vector2 , ffacing: Vector2 )
 	val production = new Production(this)
     val	facing90 = new Vector2()
 
-    id match  {
+    iid match  {
         case 1 => this.set(Resources.factoryP1)
         case 2 => this.set(Resources.factoryP2)
         case 3 => this.set(Resources.factoryP3)
