@@ -2,6 +2,7 @@ package srg.scala.paxbritannica
 
 import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.math.Vector2
+import srg.scala.paxbritannica.GameInstance
 
 class Bullet (id: Int, position: Vector2, facing: Vector2) 
   extends Ship (id, position, facing) {
@@ -16,7 +17,7 @@ class Bullet (id: Int, position: Vector2, facing: Vector2)
 			alive = false
 		} else if(velocity.len() <= 5) {
 			alive = false
-			GameInstance.getInstance().explosionParticles.addTinyExplosion(collisionCenter)
+			GameInstance.explosionParticles.addTinyExplosion(collisionCenter)
 		} else {		
 			super.draw(batch)
 		}

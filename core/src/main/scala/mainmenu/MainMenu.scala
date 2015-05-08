@@ -70,7 +70,7 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 	
 	override def show() {	
 
-		GameInstance.getInstance().resetGame()
+		GameInstance.resetGame
 
         // music
         musicOnOff.setPosition(20, 10)

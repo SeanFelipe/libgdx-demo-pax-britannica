@@ -5,14 +5,13 @@ import com.badlogic.gdx.math.Vector2
 
 import srg.scala.paxbritannica.{ GameInstance, Resources, Ship }
 
-class Bomber (int id, Vector2 position, Vector2 facing)
-    extends Ship (id, position, facing) {
+class Bomber (id: Int, position: Vector2, facing: Vector2)
+    extends Ship (id, position, facing, 440) {
 
 	val ai = new BomberAI(this)
 
-    val turnSpeed = 45f
-    val accel = 45.0f
-    var hitPoints = 440
+    override val turnSpeed = 45f
+    override val accel = 45.0f
     
     id match {
         case 1 => this.set(Resources.getInstance().bomberP1);
@@ -21,7 +20,7 @@ class Bomber (int id, Vector2 position, Vector2 facing)
         case _ => this.set(Resources.getInstance().bomberP4);
     }
 
-    this.setOrigin(this.getWidth()/2, this.getHeight()/2)
+    this.setOrigin(this.getWidth() / 2, this.getHeight() / 2)
 
 	override def draw(batch: Batch) {
 		ai.update()
@@ -30,6 +29,6 @@ class Bomber (int id, Vector2 position, Vector2 facing)
 
 	def shoot(approach: Int) {
 		 val bombFacing = new Vector2().set(facing).rotate(90 * approach)
-		 GameInstance.getInstance().bullets.add(new Bomb(id, collisionCenter, bombFacing))
+		 GameInstance.bullets.add(new Bomb(id, collisionCenter, bombFacing))
 	}
 }

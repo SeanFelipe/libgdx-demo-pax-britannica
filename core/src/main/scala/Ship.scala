@@ -7,12 +7,12 @@ import com.badlogic.gdx.utils.Array
 
 import srg.scala.paxbritannica.factory.FactoryProduction
 
-class Ship (iid: Int, pposition: Vector2, ffacing: Vector2) extends Sprite() {
+class Ship (iid: Int, pposition: Vector2, ffacing: Vector2, hp: Int = 0) extends Sprite() {
 
 	val amount = 1.0f
 	val turnSpeed = 1.0f
 	val accel = 0.0f
-	var hitPoints = 0
+	var hitPoints = hp
 	val maxHitPoints = 0
 	var delta = 0.0f
 	var aliveTime = 0.0f
@@ -58,7 +58,7 @@ class Ship (iid: Int, pposition: Vector2, ffacing: Vector2) extends Sprite() {
 		if ( ! (this.isInstanceOf[Bullet]) && hitPoints <= 0)
 			destruct
 		if (MathUtils.random() < velocity.len() / 900f) {
-			GameInstance.getInstance().bubbleParticles.addParticle(randomPointOnShip)
+			GameInstance.bubbleParticles.addParticle(randomPointOnShip)
 		}
 		super.draw(batch)
 	}
@@ -111,10 +111,10 @@ class Ship (iid: Int, pposition: Vector2, ffacing: Vector2) extends Sprite() {
 		if (this.isInstanceOf[FactoryProduction]) {
 			factoryDestruct
 		} else {
-			GameInstance.getInstance().explode(this)
+			GameInstance.explode(this)
 			alive = false
             // TODO: make this more elegant
-            val fs = GameInstance.getInstance().factorys
+            val fs = GameInstance.factorys
 			for (i <- 0 to fs.size) {
                 val factory = fs.get(i)
                 // TODO: this -- is going to cause problems ...
@@ -134,13 +134,13 @@ class Ship (iid: Int, pposition: Vector2, ffacing: Vector2) extends Sprite() {
 			this.setColor(1, 1, 1, Math.min(1, opacity))
 			opacity = opacity - 1 * delta
 			if (Math.floor(deathCounter) % nextExplosion == 0) {
-				GameInstance.getInstance().explode(this, randomPointOnShip)
+				GameInstance.explode(this, randomPointOnShip)
 				nextExplosion = MathUtils.random(2, 6)
 			}
 			deathCounter = deathCounter - 10 * delta
 		} else {
 			for (i <- 1 to 10)  {
-				GameInstance.getInstance().explode(this, randomPointOnShip)
+				GameInstance.explode(this, randomPointOnShip)
 			}
 			alive = false
 		}

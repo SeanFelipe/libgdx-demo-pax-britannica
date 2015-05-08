@@ -28,13 +28,13 @@ object Targeting {
 	 */
 	def getNearestOfType(source: Ship , shipType: Int) : Option[Ship] = {
 		if (shipType == 0)
-			return getNearestOfType(source, GameInstance.getInstance().fighters)
+			return getNearestOfType(source, GameInstance.fighters)
 		else if (shipType == 3)
-			return getFactoryWithHighestHealth(source, GameInstance.getInstance().factorys)
+			return getFactoryWithHighestHealth(source, GameInstance.factorys)
 		else if (shipType == 1)
-			return getNearestOfType(source, GameInstance.getInstance().bombers)
+			return getNearestOfType(source, GameInstance.bombers)
 		else if (shipType == 2)
-			return getNearestOfType(source, GameInstance.getInstance().frigates)
+			return getNearestOfType(source, GameInstance.frigates)
 		else
 			return null
 	}
@@ -104,13 +104,13 @@ object Targeting {
 	 */
 	def getTypeInRange(source: Ship, shipType: Int, range: Float) : Option[Ship] = {
 		if (shipType == 0)
-			return getTypeInRange(source, GameInstance.getInstance().fighters, range)
+			return getTypeInRange(source, GameInstance.fighters, range)
 		else if (shipType == 3)
-			return getTypeInRange(source, GameInstance.getInstance().factorys, range)
+			return getTypeInRange(source, GameInstance.factorys, range)
 		else if (shipType == 1)
-			return getTypeInRange(source, GameInstance.getInstance().bombers, range)
+			return getTypeInRange(source, GameInstance.bombers, range)
 		else if (shipType == 2)
-			return getTypeInRange(source, GameInstance.getInstance().frigates, range)
+			return getTypeInRange(source, GameInstance.frigates, range)
 		else
 			return null
 	}
