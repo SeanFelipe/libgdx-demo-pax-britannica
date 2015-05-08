@@ -8,8 +8,8 @@ class Bullet (id: Int, position: Vector2, facing: Vector2, bspeed: Float = 0, bd
   extends Ship (id, position, facing) {
 
 	val buffer = 500
-	var damage = bdamage
-	var bulletSpeed = bspeed
+	val damage = bdamage
+	val bulletSpeed = bspeed
 
 	override def draw(batch: Batch) {
 		if(alive == false) return
