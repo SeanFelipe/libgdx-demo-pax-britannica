@@ -7,7 +7,7 @@ import com.badlogic.gdx.utils.Array
 
 import srg.scala.paxbritannica.factory.FactoryProduction
 
-class Ship (iid: Int, pposition: Vector2, ffacing: Vector2, hp: Integer = 0) extends Sprite() {
+class Ship (iid: Int, pposition: Vector2, ffacing: Vector2, hp: Int = 0) extends Sprite() {
 
 	val id = iid
 	val amount = 1.0f

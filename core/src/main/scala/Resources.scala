@@ -129,15 +129,11 @@ object Resources {
 			atlas = new TextureAtlas(Gdx.files.internal("data/spritepack/packhigh.pack"))
 		}
 
-		try {
-			if (music != null) {
-				music.stop()
-				music.dispose()
-			} 
-			music = Gdx.audio.newMusic(Gdx.files.internal("data/audio/music.mp3"))
-		} catch (Exception e) {
-			music = Gdx.audio.newMusic(Gdx.files.internal("data/audio/music.mp3"))
-		}
+        if (music != null) {
+            music.stop()
+            music.dispose()
+        } 
+        music = Gdx.audio.newMusic(Gdx.files.internal("data/audio/music.mp3"))
 
 		factoryP1 = atlas.createSprite("factoryp1")
 		factoryP2 = atlas.createSprite("factoryp2")
