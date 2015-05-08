@@ -33,14 +33,14 @@ class Fish (starting_position: Vector2) extends Sprite () {
 
     val rnd2 = (MathUtils.random(0, 7))  
 	rnd2 match { 
-        case 0 => this.set(Resources.getInstance().fish1)
-        case 1 => this.set(Resources.getInstance().fish2)
-        case 2 => this.set(Resources.getInstance().fish3)
-        case 3 => this.set(Resources.getInstance().fish4)
-        case 4 => this.set(Resources.getInstance().fish5)
-        case 5 => this.set(Resources.getInstance().fish6)
-        case 6 => this.set(Resources.getInstance().fish7)
-        case _ => this.set(Resources.getInstance().fish8)
+        case 0 => this.set(Resources.fish1)
+        case 1 => this.set(Resources.fish2)
+        case 2 => this.set(Resources.fish3)
+        case 3 => this.set(Resources.fish4)
+        case 4 => this.set(Resources.fish5)
+        case 5 => this.set(Resources.fish6)
+        case 6 => this.set(Resources.fish7)
+        case _ => this.set(Resources.fish8)
     }
     if ( random_direction == -1 ) {
 			flip(true, false)

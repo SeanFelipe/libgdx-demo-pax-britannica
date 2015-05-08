@@ -9,7 +9,7 @@ import srg.scala.paxbritannica.Resources
 class ExplosionParticleEmitter extends ParticleEmitter(0.5f, 1f) {
 
 		delta_scale = 1.0f
-		set(Resources.getInstance().explosion)
+		set(Resources.explosion)
 
 	def addParticle( position: Vector2 , scale: Float ) {
 		super.addParticle(position, new Vector2(0,0), life, scale)

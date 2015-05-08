@@ -14,10 +14,10 @@ class Bomber (id: Int, position: Vector2, facing: Vector2)
     override val accel = 45.0f
     
     id match {
-        case 1 => this.set(Resources.getInstance().bomberP1);
-        case 2 => this.set(Resources.getInstance().bomberP2);
-        case 3 => this.set(Resources.getInstance().bomberP3);
-        case _ => this.set(Resources.getInstance().bomberP4);
+        case 1 => this.set(Resources.bomberP1);
+        case 2 => this.set(Resources.bomberP2);
+        case 3 => this.set(Resources.bomberP3);
+        case _ => this.set(Resources.bomberP4);
     }
 
     this.setOrigin(this.getWidth() / 2, this.getHeight() / 2)

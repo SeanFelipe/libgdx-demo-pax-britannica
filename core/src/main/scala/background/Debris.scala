@@ -16,9 +16,9 @@ class Debris (starting_position: Vector2) extends Sprite () {
 
     val rn = (MathUtils.random(0, 2)) 
 	rn match { 
-        case 0 => this.set(Resources.getInstance().debrisSmall)
-        case 1 => this.set(Resources.getInstance().debrisMed)
-        case _ => this.set(Resources.getInstance().debrisLarge)
+        case 0 => this.set(Resources.debrisSmall)
+        case 1 => this.set(Resources.debrisMed)
+        case _ => this.set(Resources.debrisLarge)
     }
 
 	var SPEED = 5.0f

@@ -31,11 +31,11 @@ class Countdown (start_position: Vector2) extends Sprite {
 	def changeTexture(id: Int) {
 
 		id match {
-            case 5 => this.set(Resources.getInstance().cnt5)
-            case 2 => this.set(Resources.getInstance().cnt2)
-            case 3 => this.set(Resources.getInstance().cnt3)
-            case 4 => this.set(Resources.getInstance().cnt4)
-            case _ => this.set(Resources.getInstance().cnt1)
+            case 5 => this.set(Resources.cnt5)
+            case 2 => this.set(Resources.cnt2)
+            case 3 => this.set(Resources.cnt3)
+            case 4 => this.set(Resources.cnt4)
+            case _ => this.set(Resources.cnt1)
 		}
 		this.setRotation(0)
 		this.setScale(1f)

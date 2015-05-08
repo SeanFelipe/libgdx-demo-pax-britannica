@@ -55,7 +55,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
     var touchFadeP2 = 1.0f
     var touchFadeP3 = 1.0f
     var touchFadeP4 = 1.0f
-    val blackFade = Resources.getInstance().blackFade
+    val blackFade = Resources.blackFade
     val fadeBatch = new SpriteBatch()
     fadeBatch.getProjectionMatrix().setToOrtho2D(0, 0, 2, 2)
 
@@ -65,10 +65,10 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
     val touchAreaP2 = touchAreaArray.get(1)
     val touchAreaP3 = touchAreaArray.get(2)
     val touchAreaP4 = touchAreaArray.get(3)
-    val stouchAreaP1 = Resources.getInstance().touchArea1
-    val stouchAreaP2 = Resources.getInstance().touchArea2
-    val stouchAreaP3 = Resources.getInstance().touchArea3
-    val stouchAreaP4 = Resources.getInstance().touchArea4
+    val stouchAreaP1 = Resources.touchArea1
+    val stouchAreaP2 = Resources.touchArea2
+    val stouchAreaP3 = Resources.touchArea3
+    val stouchAreaP4 = Resources.touchArea4
     stouchAreaP1.setRotation(-90)
     stouchAreaP2.setRotation(90)
     stouchAreaP1.setRotation(-90)
@@ -177,46 +177,46 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
     def setPlayerSprites {
         val pl0 = playerList.get(0)
         if(numPlayers > 0 && pl0 == 1) {
-            p1 = Resources.getInstance().factoryP1Small
+            p1 = Resources.factoryP1Small
         } else if(numPlayers > 0 && pl0 == 2) {
-            p1 = Resources.getInstance().factoryP2Small
+            p1 = Resources.factoryP2Small
         } else if(numPlayers > 0 && pl0 == 3) {
-            p1 = Resources.getInstance().factoryP3Small
+            p1 = Resources.factoryP3Small
         } else if(numPlayers>0 && pl0 == 4) {
-            p1 = Resources.getInstance().factoryP4Small		
+            p1 = Resources.factoryP4Small		
         }
 
         val pl1 = playerList.get(1)
         if(numPlayers > 1 && pl1 == 1) {
-            p2 = Resources.getInstance().factoryP1Small
+            p2 = Resources.factoryP1Small
         } else if(numPlayers > 1 && pl1 == 2) {
-            p2 = Resources.getInstance().factoryP2Small
+            p2 = Resources.factoryP2Small
         } else if(numPlayers > 1 && pl1 == 3) {
-            p2 = Resources.getInstance().factoryP3Small
+            p2 = Resources.factoryP3Small
         } else if(numPlayers > 1 && pl1 == 4) {
-            p2 = Resources.getInstance().factoryP4Small		
+            p2 = Resources.factoryP4Small		
         }
 
         val pl2 = playerList.get(2)
         if(numPlayers > 2 && pl2 == 1) {
-            p3 = Resources.getInstance().factoryP1Small
+            p3 = Resources.factoryP1Small
         } else if(numPlayers > 2 && pl2 == 2) {
-            p3 = Resources.getInstance().factoryP2Small
+            p3 = Resources.factoryP2Small
         } else if(numPlayers > 2 && pl2 == 3) {
-            p3 = Resources.getInstance().factoryP3Small
+            p3 = Resources.factoryP3Small
         } else if(numPlayers > 2 && pl2 == 4) {
-            p3 = Resources.getInstance().factoryP4Small		
+            p3 = Resources.factoryP4Small		
         }
 
         val pl3 = playerList.get(3)
         if(numPlayers > 3 && pl3 == 1) {
-            p4 = Resources.getInstance().factoryP1Small
+            p4 = Resources.factoryP1Small
         } else if(numPlayers > 3 && pl3 == 2) {
-            p4 = Resources.getInstance().factoryP2Small
+            p4 = Resources.factoryP2Small
         } else if(numPlayers > 3 && pl3 == 3) {
-            p4 = Resources.getInstance().factoryP3Small
+            p4 = Resources.factoryP3Small
         } else if(numPlayers > 3 && pl3 == 4) {
-            p4 = Resources.getInstance().factoryP4Small		
+            p4 = Resources.factoryP4Small		
         }
 
         if(numPlayers > 0) p1.setScale(.2f)

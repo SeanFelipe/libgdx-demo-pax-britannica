@@ -24,10 +24,10 @@ class Fighter (id: Integer , position: Vector2 , facing: Vector2 )
     override val accel = 120.0f
 		
 	id match {
-        case 1 => this.set(Resources.getInstance().fighterP1)
-        case 2 => this.set(Resources.getInstance().fighterP2)
-        case 3 => this.set(Resources.getInstance().fighterP3)
-        case _ => this.set(Resources.getInstance().fighterP4)
+        case 1 => this.set(Resources.fighterP1)
+        case 2 => this.set(Resources.fighterP2)
+        case 3 => this.set(Resources.fighterP3)
+        case _ => this.set(Resources.fighterP4)
     }
     this.setOrigin(this.getWidth()/2, this.getHeight()/2)
 

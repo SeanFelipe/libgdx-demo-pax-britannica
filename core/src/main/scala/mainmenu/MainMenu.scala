@@ -26,14 +26,14 @@ import srg.scala.paxbritannica.settings.Settings
 
 class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 
-    Resources.getInstance().reInit()
+    Resources.reInit()
 
-    val title = Resources.getInstance().title
-    val credits = Resources.getInstance().credits
-    val settings = Resources.getInstance().settings
-    val blackFade = Resources.getInstance().blackFade
-    val musicOnOff = Resources.getInstance().musicOnOff
-    val help = Resources.getInstance().help
+    val title = Resources.title
+    val credits = Resources.credits
+    val settings = Resources.settings
+    val blackFade = Resources.blackFade
+    val musicOnOff = Resources.musicOnOff
+    val help = Resources.help
 
     var	titleBatch = new SpriteBatch()
 	var fadeBatch = new SpriteBatch ()
@@ -94,14 +94,14 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 		
 		val prefs = Gdx.app.getPreferences("paxbritannica")
 		if(prefs.getBoolean("music") == true) { 
-			if(Resources.getInstance().music == null) Resources.getInstance().reInit()
-			if(!Resources.getInstance().music.isPlaying()) { 
-				Resources.getInstance().music.play()
-				Resources.getInstance().music.setLooping(true)
+			if(Resources.music == null) Resources.reInit()
+			if(!Resources.music.isPlaying()) { 
+				Resources.music.play()
+				Resources.music.setLooping(true)
 			}
 			musicOnOff.setColor(1,1,1,0.5f)
 		} else {
-			Resources.getInstance().music.stop()			
+			Resources.music.stop()			
 			musicOnOff.setColor(1,1,1,0.1f)
 		}
 		
@@ -346,14 +346,14 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 			prefs.putBoolean("music", !prefs.getBoolean("music"))
 			prefs.flush()
 			if(prefs.getBoolean("music")) {
-				if(Resources.getInstance().music == null) Resources.getInstance().reInit()
-				if(!Resources.getInstance().music.isPlaying()) { 
-					Resources.getInstance().music.play()
-					Resources.getInstance().music.setLooping(true)
+				if(Resources.music == null) Resources.reInit()
+				if(!Resources.music.isPlaying()) { 
+					Resources.music.play()
+					Resources.music.setLooping(true)
 				}
 				musicOnOff.setColor(1,1,1,0.5f)				
 			} else {
-				Resources.getInstance().music.stop()
+				Resources.music.stop()
 				musicOnOff.setColor(1,1,1,0.1f)
 			}			
 		}
@@ -435,14 +435,14 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 			prefs.putBoolean("music", !prefs.getBoolean("music"))
 			prefs.flush()
 			if(prefs.getBoolean("music")) {
-				if(Resources.getInstance().music == null) Resources.getInstance().reInit()
-				if(!Resources.getInstance().music.isPlaying()) { 
-					Resources.getInstance().music.play()
-					Resources.getInstance().music.setLooping(true)
+				if(Resources.music == null) Resources.reInit()
+				if(!Resources.music.isPlaying()) { 
+					Resources.music.play()
+					Resources.music.setLooping(true)
 				}
 				musicOnOff.setColor(1,1,1,0.5f)				
 			} else {
-				Resources.getInstance().music.stop()
+				Resources.music.stop()
 				musicOnOff.setColor(1,1,1,0.1f)
 			}			
 		}

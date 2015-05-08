@@ -40,10 +40,10 @@ class FactoryProduction (iid: Int , pposition: Vector2 , ffacing: Vector2 )
     val	facing90 = new Vector2()
 
     id match  {
-        case 1 => this.set(Resources.getInstance().factoryP1)
-        case 2 => this.set(Resources.getInstance().factoryP2)
-        case 3 => this.set(Resources.getInstance().factoryP3)
-        case _ => this.set(Resources.getInstance().factoryP4)
+        case 1 => this.set(Resources.factoryP1)
+        case 2 => this.set(Resources.factoryP2)
+        case 3 => this.set(Resources.factoryP3)
+        case _ => this.set(Resources.factoryP4)
     }
 
 	val light_damage1 = new Sprite()
@@ -52,12 +52,12 @@ class FactoryProduction (iid: Int , pposition: Vector2 , ffacing: Vector2 )
     val heavy_damage1 = new Sprite()
     val heavy_damage2 = new Sprite()
     val heavy_damage3 = new Sprite()
-    light_damage1.set(Resources.getInstance().factoryLightDamage1)
-    light_damage2.set(Resources.getInstance().factoryLightDamage2)
-    light_damage3.set(Resources.getInstance().factoryLightDamage3)
-    heavy_damage1.set(Resources.getInstance().factoryHeavyDamage1)
-    heavy_damage2.set(Resources.getInstance().factoryHeavyDamage2)
-    heavy_damage3.set(Resources.getInstance().factoryHeavyDamage3)
+    light_damage1.set(Resources.factoryLightDamage1)
+    light_damage2.set(Resources.factoryLightDamage2)
+    light_damage3.set(Resources.factoryLightDamage3)
+    heavy_damage1.set(Resources.factoryHeavyDamage1)
+    heavy_damage2.set(Resources.factoryHeavyDamage2)
+    heavy_damage3.set(Resources.factoryHeavyDamage3)
     var current_damage = light_damage1
 
     this.setOrigin(this.getWidth() / 2, this.getHeight() / 2)

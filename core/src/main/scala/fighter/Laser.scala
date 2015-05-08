@@ -15,7 +15,7 @@ class Laser (id: Int , position: Vector2 , facing: Vector2 )
 		
     this.velocity = new Vector2().set(facing).scl(bulletSpeed)
     
-    this.set(Resources.getInstance().laser)
+    this.set(Resources.laser)
     this.setOrigin(0,0)
 	
 	override def draw(batch: Batch ) {

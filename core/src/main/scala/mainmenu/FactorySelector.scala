@@ -12,10 +12,10 @@ class FactorySelector (starting_position: Vector2, id: Int) extends Sprite() {
     setPosition(position.x, position.y)
 
     id match {
-        case 1 => this.set(Resources.getInstance().factoryP1)
-        case 2 => this.set(Resources.getInstance().factoryP2)
-        case 3 => this.set(Resources.getInstance().factoryP3)
-        case _ => this.set(Resources.getInstance().factoryP4)
+        case 1 => this.set(Resources.factoryP1)
+        case 2 => this.set(Resources.factoryP2)
+        case 3 => this.set(Resources.factoryP3)
+        case _ => this.set(Resources.factoryP4)
     }
     setRotation(90)
     this.setColor(0, 0, 0, 1)
@@ -31,19 +31,19 @@ class FactorySelector (starting_position: Vector2, id: Int) extends Sprite() {
 	val collisionMinVector = new Vector3()
 	val collisionMaxVector = new Vector3()
 	
-	val button = new Sprite(Resources.getInstance().aButton)
+	val button = new Sprite(Resources.aButton)
     button.setPosition(position.x+70f,position.y + 35f)
 		
-    val aCpuButton = new Sprite(Resources.getInstance().aCpuButton)
+    val aCpuButton = new Sprite(Resources.aCpuButton)
     aCpuButton.setPosition(position.x+70f,position.y + 35f)
 		
-    val aPlayerButton = new Sprite(Resources.getInstance().aPlayerButton)
+    val aPlayerButton = new Sprite(Resources.aPlayerButton)
     aPlayerButton.setPosition(position.x+70f,position.y + 35f)
 		
-	val cpuButton = new Sprite(Resources.getInstance().cpuButton)
+	val cpuButton = new Sprite(Resources.cpuButton)
     cpuButton.setPosition(position.x+30f,position.y - 0f )
 		
-	val playerButton = new Sprite(Resources.getInstance().playerButton)
+	val playerButton = new Sprite(Resources.playerButton)
 	playerButton.setPosition(position.x+30f,position.y + 70f )
 		
 	val pulse = (1 + MathUtils.cos(( pulse_time / 180f ) * 2f * MathUtils.PI )) / 2f

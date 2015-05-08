@@ -8,7 +8,7 @@ import srg.scala.paxbritannica.Resources
 class SparkParticleEmitter extends ParticleEmitter (1f, 5.95f) {
 
 	var particleVelocity = new Vector2()
-    set(Resources.getInstance().spark)
+    set(Resources.spark)
 
 	def addLaserExplosion( position: Vector2, velocity: Vector2 ) {
 		for ( i <- 1 to 10 ) {
