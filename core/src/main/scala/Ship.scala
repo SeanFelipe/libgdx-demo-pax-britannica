@@ -67,17 +67,12 @@ class Ship (iid: Int, pposition: Vector2, ffacing: Vector2, hp: Int = 0) extends
 		facing.rotate(direction * turnSpeed * delta).nor()
 	}
 
-	def thrust = {
-		delta = Math.min(0.06f, Gdx.graphics.getDeltaTime())
-		velocity.add(facing.x * accel * delta, facing.y * accel * delta)
-	}
-	
-	def thrust(amount: Float) = {
+	def thrust(amount: Float = 1f) = {
 		delta = Math.min(0.06f, Gdx.graphics.getDeltaTime())
 		velocity.add(facing.x * accel * delta, facing.y * accel * amount * delta)
 	}
 
-	def randomPointOnShip : Vector2 = {
+	def randomPointOnShip() : Vector2 = {
 		return new Vector2(collisionCenter.x + MathUtils.random(-this.getWidth() / 2, this.getWidth() / 2), collisionCenter.y + MathUtils.random(-this.getHeight() / 2, this.getHeight() / 2))
 	}
 
@@ -94,11 +89,11 @@ class Ship (iid: Int, pposition: Vector2, ffacing: Vector2, hp: Int = 0) extends
 		}
 
 		if (forceThrust || facing.dot(target_direction) > 0) {
-			thrust
+			thrust()
 		}
 	}
 
-	def healthPercentage : Float = {
+	def healthPercentage() : Float = {
 		return Math.max(hitPoints / maxHitPoints, 0)
 	}
 
@@ -106,7 +101,7 @@ class Ship (iid: Int, pposition: Vector2, ffacing: Vector2, hp: Int = 0) extends
 		hitPoints = Math.max(hitPoints - amount, 0).toInt
 	}
 
-	def destruct {
+	def destruct() {
 		if (this.isInstanceOf[FactoryProduction]) {
 			factoryDestruct
 		} else {
@@ -125,7 +120,7 @@ class Ship (iid: Int, pposition: Vector2, ffacing: Vector2, hp: Int = 0) extends
 		}
 	}
 
-	def factoryDestruct {
+	def factoryDestruct() {
 		delta = Math.min(0.06f, Gdx.graphics.getDeltaTime())
 
 		if (deathCounter > 0) {

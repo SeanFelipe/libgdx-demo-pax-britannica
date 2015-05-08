@@ -29,7 +29,7 @@ object GameInstance {
 	var factoryHealthConfig = 0
 	var antiAliasConfig = 0	
 
-	def resetGame {
+	def resetGame() {
 		fighters.clear
 		factorys.clear
 		bombers.clear

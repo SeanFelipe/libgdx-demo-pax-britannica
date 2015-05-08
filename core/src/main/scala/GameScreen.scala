@@ -47,7 +47,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
     gameBatch.getProjectionMatrix().set(cam.combined);
 
     // positions (for what ??)
-    val POSITIONS = getPositions // Array[Vector2]
+    val POSITIONS = getPositions() // Array[Vector2]
 
     // fade
     var fade = 1.0f
@@ -60,7 +60,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
     fadeBatch.getProjectionMatrix().setToOrtho2D(0, 0, 2, 2)
 
     // touch areas
-    val touchAreaArray = getBoundingBoxes
+    val touchAreaArray = getBoundingBoxes()
     val touchAreaP1 = touchAreaArray.get(0)
     val touchAreaP2 = touchAreaArray.get(1)
     val touchAreaP3 = touchAreaArray.get(2)
@@ -83,7 +83,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
 
     // sprites
     var p1, p2, p3, p4 : Sprite = _
-    setPlayerSprites
+    setPlayerSprites()
 
     var pointerP1, pointerP2, pointerP3, pointerP4 : Int = _
     //setPlayerPointers
@@ -92,8 +92,8 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
 
     var currentPos = 0
 
-    setPlayerProduction
-    setEnemyProduction
+    setPlayerProduction()
+    setEnemyProduction()
        
     Gdx.gl.glDisable(GL20.GL_CULL_FACE)
     Gdx.gl.glDisable(GL20.GL_DEPTH_TEST)
@@ -107,40 +107,42 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
 ///////////////////
 // custom methods
 
-    def getBoundingBoxes : Array[BoundingBox] = {
+    def getBoundingBoxes() : Array[BoundingBox] = {
 
         // bounding box dimensions
         val playerBoundingBoxVectors = new Array[Vector3](numPlayers * 2)
-        val cw = (this.width - 800) / 2
-        val ch = (this.height - 480) / 2
-        val w12 = this.width / 2
-        val h12 = this.height / 2
+        val width_float = this.width.toFloat
+        val height_float = this.height.toFloat
+        val cw = ((this.width - 800) / 2).toFloat
+        val ch = ((this.height - 480) / 2).toFloat
+        val w12 = (this.width / 2).toFloat
+        val h12 = (this.height / 2).toFloat
 
         numPlayers match {
             case 1 => 
                 playerBoundingBoxVectors.set(0, new Vector3(cw, -ch, 0))
-                playerBoundingBoxVectors.set(1, new Vector3(cw + this.width, -ch + this.height, 0));
+                playerBoundingBoxVectors.set(1, new Vector3(cw + width_float, -ch + height_float, 0));
             case 2 =>
                 playerBoundingBoxVectors.set(0, new Vector3(-cw, -ch, 0))
-                playerBoundingBoxVectors.set(1, new Vector3(-cw + w12, -ch + this.height, 0))
+                playerBoundingBoxVectors.set(1, new Vector3(-cw + w12, -ch + height_float, 0))
                 playerBoundingBoxVectors.set(2, new Vector3(-cw + w12, -ch, 0))
-                playerBoundingBoxVectors.set(3, new Vector3(-cw + this.width, -ch + this.height, 0));
+                playerBoundingBoxVectors.set(3, new Vector3(-cw + width_float, -ch + height_float, 0));
             case 3 =>
                 playerBoundingBoxVectors.set(0, new Vector3(-cw, -ch, 0))
                 playerBoundingBoxVectors.set(1, new Vector3(-cw + w12, -ch + h12, 0))
                 playerBoundingBoxVectors.set(2, new Vector3(-cw, -ch + h12, 0))
-                playerBoundingBoxVectors.set(3, new Vector3(-cw + w12 , -ch + this.height, 0))
+                playerBoundingBoxVectors.set(3, new Vector3(-cw + w12 , -ch + height_float, 0))
                 playerBoundingBoxVectors.set(4, new Vector3(-cw + w12, -ch, 0))
-                playerBoundingBoxVectors.set(5, new Vector3(-cw + this.width, -ch + this.height, 0));
+                playerBoundingBoxVectors.set(5, new Vector3(-cw + width_float, -ch + height_float, 0));
             case 4 =>
                 playerBoundingBoxVectors.set(0, new Vector3(-cw, -ch, 0))
                 playerBoundingBoxVectors.set(1, new Vector3(-cw + w12, -ch + h12, 0))
                 playerBoundingBoxVectors.set(2, new Vector3(-cw, -ch + h12, 0))
-                playerBoundingBoxVectors.set(3, new Vector3(-cw + w12, -ch + this.height, 0))
+                playerBoundingBoxVectors.set(3, new Vector3(-cw + w12, -ch + height_float, 0))
                 playerBoundingBoxVectors.set(4, new Vector3(-cw + w12, -ch, 0))
-                playerBoundingBoxVectors.set(5, new Vector3(-cw + this.width, -ch + h12, 0))
+                playerBoundingBoxVectors.set(5, new Vector3(-cw + width_float, -ch + h12, 0))
                 playerBoundingBoxVectors.set(6, new Vector3(-cw + w12, -ch + h12, 0))
-                playerBoundingBoxVectors.set(7, new Vector3(-cw + this.width, -ch + this.height, 0));
+                playerBoundingBoxVectors.set(7, new Vector3(-cw + width_float, -ch + height_float, 0));
         }
 
         // instantiate boxes
@@ -155,7 +157,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         return playerBoundingBoxes
     }
 
-    def getPositions : Array[Vector2] = {
+    def getPositions() : Array[Vector2] = {
         val parr = new Array[Vector2](
             if (numPlayers + numCpus != 3) 4;
             else 3
@@ -174,7 +176,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         return parr
     }
 
-    def setPlayerSprites {
+    def setPlayerSprites() {
         val pl0 = playerList.get(0)
         if(numPlayers > 0 && pl0 == 1) {
             p1 = Resources.factoryP1Small
@@ -231,7 +233,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
 
     }
 
-    def setPlayerProduction {
+    def setPlayerProduction() {
         for (i <- 0 until numPlayers)  {
             val v1 = new Vector2(POSITIONS.get(currentPos).x, POSITIONS.get(currentPos).y)
             val v2 = new Vector2(POSITIONS.get(currentPos).x, POSITIONS.get(currentPos).y)
@@ -242,7 +244,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         }
     }
 
-    def setEnemyProduction {
+    def setEnemyProduction() {
         val pp = POSITIONS.get(currentPos)
         val px = pp.x
         val py = pp.y
@@ -263,7 +265,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         }
     }
 
-    def generatePositions (n: Int) : Array[Vector2] = {
+    def generatePositions() (n: Int) : Array[Vector2] = {
         val positions = new Array[Vector2](n)
         for (i <- 0 until n) {
             positions.add(new Vector2(
