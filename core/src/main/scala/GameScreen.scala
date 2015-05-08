@@ -447,22 +447,22 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         // https://github.com/libgdx/libgdx-demo-pax-britannica/blob/master/core/src/de/swagner/paxbritannica/GameScreen.java#L658
             case Input.Keys.A =>
                 if(numPlayers > 0 && fsize > 0) {
-                    (GameInstance.getInstance().factorys.get(0)).button_held = true
+                    (GameInstance.getInstance().factorys.get(0)).asInstanceOf[FactoryProduction].button_held = true
                     touchedP1 = true
                 };
             case Input.Keys.F =>
                 if(numPlayers > 1 && fsize > 1) {
-                    (GameInstance.getInstance().factorys.get(1)).button_held = true
+                    (GameInstance.getInstance().factorys.get(1)).asInstanceOf[FactoryProduction].button_held = true
                     touchedP2 = true
                 }; 
             case Input.Keys.H =>
                 if(numPlayers > 2 && fsize > 2) {
-                    (GameInstance.getInstance().factorys.get(2)).button_held = true
+                    (GameInstance.getInstance().factorys.get(2)).asInstanceOf[FactoryProduction].button_held = true
                     touchedP3 = true
                 }; 
             case Input.Keys.L =>
                 if(numPlayers > 3 && fsize > 3) {
-                    (GameInstance.getInstance().factorys.get(3)).button_held = true
+                    (GameInstance.getInstance().factorys.get(3)).asInstanceOf[FactoryProduction].button_held = true
                     touchedP4 = true
                 }
         }
@@ -476,19 +476,19 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         keycode match {
             case Input.Keys.A =>
                 if(numPlayers > 0 && fsize > 0) {
-                    (GameInstance.getInstance().factorys.get(0)).button_held = false
+                    (GameInstance.getInstance().factorys.get(0)).asInstanceOf[FactoryProduction].button_held = false
                 };
             case Input.Keys.F =>
                 if(numPlayers > 1 && fsize > 1) {
-                    (GameInstance.getInstance().factorys.get(1)).button_held = false
+                    (GameInstance.getInstance().factorys.get(1)).asInstanceOf[FactoryProduction].button_held = false
                 }; 
             case Input.Keys.H =>
                 if(numPlayers > 2 && fsize > 1) {
-                    (GameInstance.getInstance().factorys.get(2)).button_held = false
+                    (GameInstance.getInstance().factorys.get(2)).asInstanceOf[FactoryProduction].button_held = false
                 };
             case Input.Keys.L =>
                 if(numPlayers >3 && fsize > 1) {
-                    (GameInstance.getInstance().factorys.get(3)).button_held = false
+                    (GameInstance.getInstance().factorys.get(3)).asInstanceOf[FactoryProduction].button_held = false
                 } 
         }
         return false
@@ -506,22 +506,22 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         val fsize = GameInstance.getInstance().factorys.size
 
         if(numPlayers > 0 && Intersector.intersectRayBoundsFast(collisionRay, touchAreaP1) && fsize > 0) {
-            (GameInstance.getInstance().factorys(0)).button_held = true
+            (GameInstance.getInstance().factorys.get(0)).asInstanceOf[FactoryProduction].button_held = true
             pointerP1 = pointer
             touchedP1 = true
         } 
         if(numPlayers >1 && Intersector.intersectRayBoundsFast(collisionRay, touchAreaP2) && fsize > 1) {
-            (GameInstance.getInstance().factorys(1)).button_held = true
+            (GameInstance.getInstance().factorys.get(1)).asInstanceOf[FactoryProduction].button_held = true
             pointerP2 = pointer
             touchedP2 = true
         } 
         if(numPlayers >2 && Intersector.intersectRayBoundsFast(collisionRay, touchAreaP3) && fsize > 2) {
-            (GameInstance.getInstance().factorys(2)).button_held = true
+            (GameInstance.getInstance().factorys.get(2)).asInstanceOf[FactoryProduction].button_held = true
             pointerP3 = pointer
             touchedP3 = true
         } 
         if(numPlayers >3 && Intersector.intersectRayBoundsFast(collisionRay, touchAreaP4) && fsize > 3) {
-            (GameInstance.getInstance().factorys(3)).button_held = true
+            (GameInstance.getInstance().factorys.get(3)).asInstanceOf[FactoryProduction].button_held = true
             pointerP4 = pointer
             touchedP4 = true
         } 
@@ -534,19 +534,19 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         val fsize = GameInstance.getInstance().factorys.size
 
         if(numPlayers > 0 && pointer == pointerP1 && fsize > 0) {
-            (GameInstance.getInstance().factorys(0)).button_held = false
+            (GameInstance.getInstance().factorys.get(0)).asInstanceOf[FactoryProduction].button_held = false
             pointerP1 = -1
         } 
         if(numPlayers >1 && pointer == pointerP2 &&  fsize > 1) {
-            (GameInstance.getInstance().factorys(1)).button_held = false
+            (GameInstance.getInstance().factorys.get(1)).asInstanceOf[FactoryProduction].button_held = false
             pointerP2 = -1
         } 
         if(numPlayers >2 && pointer == pointerP3 &&  fsize > 1) {
-            (GameInstance.getInstance().factorys(2)).button_held = false
+            (GameInstance.getInstance().factorys.get(2)).asInstanceOf[FactoryProduction].button_held = false
             pointerP3 = -1
         } 
         if(numPlayers >3 && pointer == pointerP4 &&  fsize > 1) {
-            (GameInstance.getInstance().factorys(3)).button_held = false
+            (GameInstance.getInstance().factorys.get(3)).asInstanceOf[FactoryProduction].button_held = false
             pointerP4 = -1
         } 
         return false
