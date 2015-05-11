@@ -1,6 +1,6 @@
 package srg.scala.paxbritannica
 
-class Constants {
+object Constants {
 	
 	val screenLeft = 0f
 	val screenRight = 800f

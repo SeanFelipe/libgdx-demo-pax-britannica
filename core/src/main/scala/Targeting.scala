@@ -3,6 +3,7 @@ package srg.scala.paxbritannica
 import com.badlogic.gdx.math.{ MathUtils, Vector2 }
 import com.badlogic.gdx.utils.Array
 
+import srg.scala.paxbritannica.Constants
 import srg.scala.paxbritannica.bomber.Bomber
 import srg.scala.paxbritannica.factory.FactoryProduction
 import srg.scala.paxbritannica.fighter.Fighter
