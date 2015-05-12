@@ -1,30 +1,21 @@
 package srg.scala.paxbritannica.mainmenu
 
 import com.badlogic.gdx.Application.ApplicationType
-import com.badlogic.gdx.Game
-import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.Input
-import com.badlogic.gdx.InputProcessor
-import com.badlogic.gdx.Preferences
+import com.badlogic.gdx.{ Game, Gdx, Input, InputProcessor, Preferences }
 import com.badlogic.gdx.graphics.OrthographicCamera
-import com.badlogic.gdx.graphics.g2d.Sprite
-import com.badlogic.gdx.graphics.g2d.SpriteBatch
-import com.badlogic.gdx.math.Intersector
-import com.badlogic.gdx.math.Vector2
-import com.badlogic.gdx.math.Vector3
-import com.badlogic.gdx.math.collision.BoundingBox
-import com.badlogic.gdx.math.collision.Ray
+import com.badlogic.gdx.graphics.g2d.{ Sprite, SpriteBatch }
+import com.badlogic.gdx.math.{ Intersector, Vector2, Vector3 }
+import com.badlogic.gdx.math.collision.{ BoundingBox, Ray }
 import com.badlogic.gdx.utils.Array
 
-import srg.scala.paxbritannica.DefaultScreen
-import srg.scala.paxbritannica.GameInstance
-import srg.scala.paxbritannica.GameScreen
-import srg.scala.paxbritannica.Resources
+import srg.scala.paxbritannica.{ DefaultScreen, GameInstance, GameScreen, Resources }
 import srg.scala.paxbritannica.background.BackgroundFXRenderer
 import srg.scala.paxbritannica.help.Help
 import srg.scala.paxbritannica.settings.Settings
 
 class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
+
+    println("MainMenu says hello!")
 
     Resources.reInit()
 
@@ -76,17 +67,26 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
         musicOnOff.setPosition(20, 10)
 		musicOnOff.setColor(1,1,1,0.5f)
 
-		collisionMusic.set(new Vector3(musicOnOff.getVertices()(0), musicOnOff.getVertices()(1), -10),new Vector3(musicOnOff.getVertices()(10), musicOnOff.getVertices()(11), 10))
+		collisionMusic.set(
+            new Vector3(musicOnOff.getVertices()(0), musicOnOff.getVertices()(1), -10),
+            new Vector3(musicOnOff.getVertices()(10), musicOnOff.getVertices()(11), 10)
+        );
 
         // help
 		help.setPosition(75, 10)
 		help.setColor(1,1,1,0.5f)
-		collisionHelp.set(new Vector3(help.getVertices()(0), help.getVertices()(1), -10),new Vector3(help.getVertices()(10), help.getVertices()(11), 10))
+		collisionHelp.set(
+            new Vector3(help.getVertices()(0), help.getVertices()(1), -10),
+            new Vector3(help.getVertices()(10), help.getVertices()(11), 10)
+        );
 
         // settings
 		settings.setPosition(135, 8)
 		settings.setColor(1,1,1,0.5f)
-		collisionSettings.set(new Vector3(settings.getVertices()(0), settings.getVertices()(1), -10),new Vector3(settings.getVertices()(10), settings.getVertices()(11), 10))
+		collisionSettings.set(
+            new Vector3(settings.getVertices()(0), settings.getVertices()(1), -10),
+            new Vector3(settings.getVertices()(10), settings.getVertices()(11), 10)
+        );
 		
         // spritebatches
 		titleBatch.getProjectionMatrix().setToOrtho2D(0, 0, 800, 480)
@@ -171,9 +171,20 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 		help.setPosition(75- ((this.width-800)/2), 10- ((this.height-480)/2))
 		settings.setPosition(135 - ((this.width-800)/2), 8- ((this.height-480)/2))
 		
-		collisionMusic.set(new Vector3(musicOnOff.getVertices()(0), musicOnOff.getVertices()(1), -10),new Vector3(musicOnOff.getVertices()(10), musicOnOff.getVertices()(11), 10))
-		collisionHelp.set(new Vector3(help.getVertices()(0), help.getVertices()(1), -10),new Vector3(help.getVertices()(10), help.getVertices()(11), 10))
-		collisionSettings.set(new Vector3(settings.getVertices()(0), settings.getVertices()(1), -10),new Vector3(settings.getVertices()(10), settings.getVertices()(11), 10))
+		collisionMusic.set(
+            new Vector3(musicOnOff.getVertices()(0), musicOnOff.getVertices()(1), -10),
+            new Vector3(musicOnOff.getVertices()(10), musicOnOff.getVertices()(11), 10)
+        );
+
+		collisionHelp.set(
+            new Vector3(help.getVertices()(0), help.getVertices()(1), -10),
+            new Vector3(help.getVertices()(10), help.getVertices()(11), 10)
+        );
+
+		collisionSettings.set(
+            new Vector3(settings.getVertices()(0), settings.getVertices()(1), -10),
+            new Vector3(settings.getVertices()(10), settings.getVertices()(11), 10)
+        );
 	
 	}
 
@@ -388,6 +399,8 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 
 	override def touchDown(x: Int, y: Int, pointer: Int, button: Int) : Boolean = {
 	
+        println(s"touchDown at: $x, $y")
+
 		collisionRay = cam.getPickRay(x, y)
 		
 		if (cnt > 4 || countdown.finished)
@@ -402,28 +415,36 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 			p3.picked = true
 		} else if (Intersector.intersectRayBoundsFast(collisionRay, p4.collision) && !p4.picked) {
 			p4.picked = true
-		} else if (Intersector.intersectRayBoundsFast(collisionRay, p1.collisionPlayerSelect) && p1.picked && !p1.cpuSelect) {
+		} else if (
+            Intersector.intersectRayBoundsFast(collisionRay, p1.collisionPlayerSelect) && p1.picked && !p1.cpuSelect) {
 			p1.playerSelect = true
 			p1.cpuSelect = false
-		} else if (Intersector.intersectRayBoundsFast(collisionRay, p2.collisionPlayerSelect) && p2.picked && !p2.cpuSelect) {
+		} else if (
+            Intersector.intersectRayBoundsFast(collisionRay, p2.collisionPlayerSelect) && p2.picked && !p2.cpuSelect) {
 			p2.playerSelect = true
 			p2.cpuSelect = false
-		} else if (Intersector.intersectRayBoundsFast(collisionRay, p3.collisionPlayerSelect) && p3.picked && !p3.cpuSelect) {
+		} else if (
+            Intersector.intersectRayBoundsFast(collisionRay, p3.collisionPlayerSelect) && p3.picked && !p3.cpuSelect) {
 			p3.playerSelect = true
 			p3.cpuSelect = false
-		} else if (Intersector.intersectRayBoundsFast(collisionRay, p4.collisionPlayerSelect) && p4.picked && !p4.cpuSelect) {
+		} else if (
+            Intersector.intersectRayBoundsFast(collisionRay, p4.collisionPlayerSelect) && p4.picked && !p4.cpuSelect) {
 			p4.playerSelect = true
 			p4.cpuSelect = false
-		} else if (Intersector.intersectRayBoundsFast(collisionRay, p1.collisionCPUSelect) && p1.picked && !p1.playerSelect) {
+		} else if (
+            Intersector.intersectRayBoundsFast(collisionRay, p1.collisionCPUSelect) && p1.picked && !p1.playerSelect) {
 			p1.cpuSelect = true
 			p1.playerSelect = false
-		} else if (Intersector.intersectRayBoundsFast(collisionRay, p2.collisionCPUSelect) && p2.picked && !p2.playerSelect) {
+		} else if (
+            Intersector.intersectRayBoundsFast(collisionRay, p2.collisionCPUSelect) && p2.picked && !p2.playerSelect) {
 			p2.cpuSelect = true
 			p2.playerSelect = false
-		} else if (Intersector.intersectRayBoundsFast(collisionRay, p3.collisionCPUSelect) && p3.picked && !p3.playerSelect) {
+		} else if (
+            Intersector.intersectRayBoundsFast(collisionRay, p3.collisionCPUSelect) && p3.picked && !p3.playerSelect) {
 			p3.cpuSelect = true
 			p3.playerSelect = false
-		} else if (Intersector.intersectRayBoundsFast(collisionRay, p4.collisionCPUSelect) && p4.picked && !p4.playerSelect) {
+		} else if (
+            Intersector.intersectRayBoundsFast(collisionRay, p4.collisionCPUSelect) && p4.picked && !p4.playerSelect) {
 			p4.cpuSelect = true
 			p4.playerSelect = false
 		}
@@ -435,8 +456,8 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 			prefs.putBoolean("music", !prefs.getBoolean("music"))
 			prefs.flush()
 			if(prefs.getBoolean("music")) {
-				if(Resources.music == null) Resources.reInit()
-				if(!Resources.music.isPlaying()) { 
+				if( Resources.music == null) Resources.reInit()
+				if(! Resources.music.isPlaying()) { 
 					Resources.music.play()
 					Resources.music.setLooping(true)
 				}
@@ -465,22 +486,18 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 	}
 
 	override def touchUp(x: Int, y: Int, pointer: Int, button: Int) : Boolean = {
-		// TODO Auto-generated method stub
 		return false
 	}
 
 	override def touchDragged(x: Int, y: Int, pointer: Int) : Boolean =  {
-		// TODO Auto-generated method stub
 		return false
 	}
 
 	override def scrolled(amount: Int) : Boolean = {
-		// TODO Auto-generated method stub
 		return false
 	}
 
 	override def mouseMoved(screenX: Int, screenY: Int) : Boolean = {
-		// TODO Auto-generated method stub
 		return false
 	}
 }
