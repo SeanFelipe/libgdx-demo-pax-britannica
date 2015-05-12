@@ -7,6 +7,25 @@ Pax Britannica, ported to Scala. A learning exercise for myself, and hopefully t
 * uses the libgdx-scala plugin found [here](https://github.com/libgdx/libgdx/wiki/Using-libgdx-with-Scala)
 * uses Scala's SBT build tool instead of Gradle. I've found it to work well with no hiccups.
 
+#### Compile !
+
+    ~/stuffs/pax-britannica $ sbt
+    [info] Loading global plugins from /Users/shoobeedo/.sbt/0.13/plugins
+    [info] Loading project definition from /Users/shoobeedo/stuffs/pax-britannica/project
+    [info] Set current project to all-platforms (in build file:/Users/shoobeedo/stuffs/pax-britannica/)
+    > ;clean;compile
+    [success] Total time: 0 s, completed May 11, 2015 5:09:29 PM
+    
+    ...
+    ...
+
+    [success] Total time: 15 s, completed May 11, 2015 5:09:44 PM
+
+
+woot woot! 
+
+and, uh, ignore all those warnings!
+
 
 ### Development notes
 
