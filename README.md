@@ -2,6 +2,11 @@
 
 Pax Britannica, ported to Scala. A learning exercise for myself, and hopefully this can be useful to the community as well.
 
+original java is here: https://github.com/libgdx/libgdx-demo-pax-britannica
+original original Lua is here: https://github.com/henkboom/pax-britannica
+
+Lua !!!
+
 #### Setup
 
 * uses the libgdx-scala plugin found [here](https://github.com/libgdx/libgdx/wiki/Using-libgdx-with-Scala)
