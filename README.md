@@ -5,7 +5,7 @@ Pax Britannica, ported to Scala. A learning exercise for myself, and hopefully t
 #### Setup
 
 * uses the libgdx-scala plugin found [here](https://github.com/libgdx/libgdx/wiki/Using-libgdx-with-Scala)
-* uses Scala's SBT build tool instead of Gradle. I've found it to work well with no hiccups.
+* uses Scala's SBT build tool instead of Gradle. I've found it to work well!
 
 #### Compile !
 
@@ -46,7 +46,7 @@ Along those lines -- there is a lot of this pattern going on:
 
 #### Libgdx Array class and ForEach
 
-Looks like the Libgdx Array class doesn't play well with the Scala for implementation. So java foreach works, but in Scala I don't get an iterator. Probably have to tweak the libgdx Array class for Scala. Interesting project!
+Looks like the Libgdx Array class doesn't play well with the Scala for implementation. So java foreach works, but in Scala I don't get an iterator. So for now, I'm using some manual array indexing. Ugly but works. Next step here is probably to tweak the libgdx Array class for Scala. Interesting project!
 
 #### Casting
 
