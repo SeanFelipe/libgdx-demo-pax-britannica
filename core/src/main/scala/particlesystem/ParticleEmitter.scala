@@ -33,7 +33,7 @@ class ParticleEmitter ( alife:Float = 1, adamping:Float = 1) extends Sprite {
 				val dx = this.getWidth() / 2 * particle.scale //Float
 				val dy = this.getHeight() / 2 * particle.scale //Float
 				this.setColor(1, 1, 1, Math.max(particle.life / this.life,0))	//r-g-b-a
-				this.setScale(particle.scale)
+                this.setScale(particle.scale)
 				this.setPosition(particle.position.x -dx, particle.position.y -dy)
 				if( ! ((particle.position.y -dy) >= -10 && (particle.position.y -dy) <= 10) && !((particle.position.x -dx) >= -10 && ( particle.position.x -dx ) <= 10)) {
 					super.draw(batch)

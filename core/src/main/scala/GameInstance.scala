@@ -48,8 +48,8 @@ object GameInstance {
 		
 		val prefs = Gdx.app.getPreferences("paxbritannica")
 		difficultyConfig = prefs.getInteger("difficulty",0)
-		factoryHealthConfig = prefs.getInteger("factoryHealth",0)
-		antiAliasConfig = prefs.getInteger("antiAliasConfig",1)
+		factoryHealthConfig = prefs.getInteger("factoryHealth", 0)
+		antiAliasConfig = prefs.getInteger("antiAliasConfig", 1)
 	}
 
 	def bulletHit( ship: Ship, bullet: Bullet ) {

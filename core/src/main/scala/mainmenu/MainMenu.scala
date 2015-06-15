@@ -401,6 +401,7 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 	
         println(s"touchDown at: $x, $y")
 
+        /*
 		collisionRay = cam.getPickRay(x, y)
 		
 		if (cnt > 4 || countdown.finished)
@@ -482,7 +483,9 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 			changeToScreen = 1
 		}
 		
+        */
 		return false
+
 	}
 
 	override def touchUp(x: Int, y: Int, pointer: Int, button: Int) : Boolean = {
@@ -498,6 +501,7 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 	}
 
 	override def mouseMoved(screenX: Int, screenY: Int) : Boolean = {
+		// TODO Auto-generated method stub
 		return false
 	}
 }
