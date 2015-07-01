@@ -29,6 +29,9 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
     var	titleBatch = new SpriteBatch()
 	var fadeBatch = new SpriteBatch ()
 
+    // these determine where it shows up visually
+    // but the click collision is screwed up somehow
+    // only seems to listen on a particular point for all 4 selectors
 	val	p1 = new FactorySelector(new Vector2(055f, 150f), 1)
 	val	p2 = new FactorySelector(new Vector2(180f, 150f), 2)
 	val	p3 = new FactorySelector(new Vector2(305f, 150f), 3)
@@ -58,7 +61,8 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 	var height = 480
 
     Gdx.input.setInputProcessor(this)
-	
+
+
 	override def show() {	
 
 		GameInstance.resetGame
@@ -227,14 +231,14 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 			countdown.reset()
 			oldCnt = cnt
 		}
-		if ((p1.picked && !(p1.playerSelect || p1.cpuSelect)) || (p2.picked && !(p2.playerSelect || p2.cpuSelect)) || (p3.picked
-				&& !(p3.playerSelect || p3.cpuSelect)) || (p4.picked && !(p4.playerSelect || p4.cpuSelect))) {
+		if ((p1.picked && ! (p1.playerSelect || p1.cpuSelect)) || (p2.picked && ! (p2.playerSelect || p2.cpuSelect)) || (p3.picked
+				&& ! (p3.playerSelect || p3.cpuSelect)) || (p4.picked && ! (p4.playerSelect || p4.cpuSelect))) {
 			countdown.reset()
 		}
 
 		titleBatch.end()
 
-		if (!countdown.finished && fade > 0) {
+		if ( ! countdown.finished && fade > 0) {
 			fade = Math.max(fade - delta / 2f, 0)
 			fadeBatch.begin()
 			blackFade.setColor(blackFade.getColor().r, blackFade.getColor().g, blackFade.getColor().b, fade)
@@ -248,7 +252,12 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 			blackFade.setColor(blackFade.getColor().r, blackFade.getColor().g, blackFade.getColor().b, fade)
 			blackFade.draw(fadeBatch)
 			fadeBatch.end()
-			if (fade >= 1 && cnt>=2) {
+            val playerList = new Array[Integer]
+            val cpuList = new Array[Integer]
+            playerList.add(1)
+            cpuList.add(2)
+
+			if (fade >= 1 && cnt >= 2) {
 				val playerList = new Array[Integer]
 				if(p1.playerSelect == true) {
 					playerList.add(1)
@@ -275,16 +284,15 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 				if(p4.cpuSelect == true) {
 					cpuList.add(4)
 				}
-				game.setScreen(new GameScreen(game, playerList, cpuList))
-			} else if(fade >= 1 && cnt<1)   {
-				if(changeToScreen==1) {
+                
+			} else if(fade >= 1 && cnt < 1)   {
+				if(changeToScreen == 1) {
 					game.setScreen(new Settings(game))
 				} else {
 					game.setScreen(new Help(game))
 				}
 			}
 		}
-
 	}
 
 	override def hide() {
@@ -318,7 +326,7 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 		}
 		
 		if(keycode == Input.Keys.A) {
-			if (!p1.picked) {
+			if (! p1.picked) {
 				p1.picked = true
 			} else {
 				p1.playerSelect = true
@@ -326,7 +334,7 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 			}			
 		}		
 		if(keycode == Input.Keys.F) {
-			if (!p2.picked) {
+			if (! p2.picked) {
 				p2.picked = true
 			}  else {
 				p2.playerSelect = true
@@ -334,7 +342,7 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 			}	
 		}		
 		if(keycode == Input.Keys.H) {
-			if (!p3.picked) {
+			if (! p3.picked) {
 				p3.picked = true
 			}  else {
 				p3.playerSelect = true
@@ -342,7 +350,7 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 			}	
 		}
 		if(keycode == Input.Keys.L) {
-			if (!p4.picked) {
+			if (! p4.picked) {
 				p4.picked = true
 			}  else {
 				p4.playerSelect = true
@@ -401,51 +409,59 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 	
         println(s"touchDown at: $x, $y")
 
-        /*
 		collisionRay = cam.getPickRay(x, y)
 		
 		if (cnt > 4 || countdown.finished)
 			return false	
-		
+
+        println(p1.collision)
+        println(p2.collision)
+        println(p3.collision)
+        println(p4.collision)
+
 		// check if ship is activated
-		if (Intersector.intersectRayBoundsFast(collisionRay, p1.collision) && !p1.picked) {
+		if (Intersector.intersectRayBoundsFast(collisionRay, p1.collision) && ! p1.picked) {
+            println("p1 picked!")
 			p1.picked = true
-		} else if (Intersector.intersectRayBoundsFast(collisionRay, p2.collision) && !p2.picked) {
+		} else if (Intersector.intersectRayBoundsFast(collisionRay, p2.collision) && ! p2.picked) {
+            println("p2 picked!")
 			p2.picked = true
-		} else if (Intersector.intersectRayBoundsFast(collisionRay, p3.collision) && !p3.picked) {
+		} else if (Intersector.intersectRayBoundsFast(collisionRay, p3.collision) && ! p3.picked) {
+            println("p3 picked!")
 			p3.picked = true
-		} else if (Intersector.intersectRayBoundsFast(collisionRay, p4.collision) && !p4.picked) {
+		} else if (Intersector.intersectRayBoundsFast(collisionRay, p4.collision) && ! p4.picked) {
+            println("p4 picked!")
 			p4.picked = true
 		} else if (
-            Intersector.intersectRayBoundsFast(collisionRay, p1.collisionPlayerSelect) && p1.picked && !p1.cpuSelect) {
+            Intersector.intersectRayBoundsFast(collisionRay, p1.collisionPlayerSelect) && p1.picked && ! p1.cpuSelect) {
 			p1.playerSelect = true
 			p1.cpuSelect = false
 		} else if (
-            Intersector.intersectRayBoundsFast(collisionRay, p2.collisionPlayerSelect) && p2.picked && !p2.cpuSelect) {
+            Intersector.intersectRayBoundsFast(collisionRay, p2.collisionPlayerSelect) && p2.picked && ! p2.cpuSelect) {
 			p2.playerSelect = true
 			p2.cpuSelect = false
 		} else if (
-            Intersector.intersectRayBoundsFast(collisionRay, p3.collisionPlayerSelect) && p3.picked && !p3.cpuSelect) {
+            Intersector.intersectRayBoundsFast(collisionRay, p3.collisionPlayerSelect) && p3.picked && ! p3.cpuSelect) {
 			p3.playerSelect = true
 			p3.cpuSelect = false
 		} else if (
-            Intersector.intersectRayBoundsFast(collisionRay, p4.collisionPlayerSelect) && p4.picked && !p4.cpuSelect) {
+            Intersector.intersectRayBoundsFast(collisionRay, p4.collisionPlayerSelect) && p4.picked && ! p4.cpuSelect) {
 			p4.playerSelect = true
 			p4.cpuSelect = false
 		} else if (
-            Intersector.intersectRayBoundsFast(collisionRay, p1.collisionCPUSelect) && p1.picked && !p1.playerSelect) {
+            Intersector.intersectRayBoundsFast(collisionRay, p1.collisionCPUSelect) && p1.picked && ! p1.playerSelect) {
 			p1.cpuSelect = true
 			p1.playerSelect = false
 		} else if (
-            Intersector.intersectRayBoundsFast(collisionRay, p2.collisionCPUSelect) && p2.picked && !p2.playerSelect) {
+            Intersector.intersectRayBoundsFast(collisionRay, p2.collisionCPUSelect) && p2.picked && ! p2.playerSelect) {
 			p2.cpuSelect = true
 			p2.playerSelect = false
 		} else if (
-            Intersector.intersectRayBoundsFast(collisionRay, p3.collisionCPUSelect) && p3.picked && !p3.playerSelect) {
+            Intersector.intersectRayBoundsFast(collisionRay, p3.collisionCPUSelect) && p3.picked && ! p3.playerSelect) {
 			p3.cpuSelect = true
 			p3.playerSelect = false
 		} else if (
-            Intersector.intersectRayBoundsFast(collisionRay, p4.collisionCPUSelect) && p4.picked && !p4.playerSelect) {
+            Intersector.intersectRayBoundsFast(collisionRay, p4.collisionCPUSelect) && p4.picked && ! p4.playerSelect) {
 			p4.cpuSelect = true
 			p4.playerSelect = false
 		}
@@ -483,7 +499,6 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 			changeToScreen = 1
 		}
 		
-        */
 		return false
 
 	}

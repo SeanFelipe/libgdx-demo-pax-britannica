@@ -10,6 +10,9 @@ class FactorySelector (starting_position: Vector2, id: Int) extends Sprite() {
 
     var position = starting_position
     setPosition(position.x, position.y)
+    println("----------------------------------------")
+    println(s"id: $id position: $position")
+
 
     id match {
         case 1 => this.set(Resources.factoryP1)
@@ -25,26 +28,26 @@ class FactorySelector (starting_position: Vector2, id: Int) extends Sprite() {
 	var playerSelect = false
 	var cpuSelect = false
 
-	val collision = new BoundingBox()
-	val collisionPlayerSelect = new BoundingBox()
-	val collisionCPUSelect = new BoundingBox()
-	val collisionMinVector = new Vector3()
-	val collisionMaxVector = new Vector3()
+	var collision = new BoundingBox()
+	var collisionPlayerSelect = new BoundingBox()
+	var collisionCPUSelect = new BoundingBox()
+	var collisionMinVector = new Vector3()
+	var collisionMaxVector = new Vector3()
 	
 	val button = new Sprite(Resources.aButton)
-    button.setPosition(position.x+70f,position.y + 35f)
+    button.setPosition(position.x + 70f, position.y + 35f)
 		
     val aCpuButton = new Sprite(Resources.aCpuButton)
-    aCpuButton.setPosition(position.x+70f,position.y + 35f)
+    aCpuButton.setPosition(position.x + 70f, position.y + 35f)
 		
     val aPlayerButton = new Sprite(Resources.aPlayerButton)
-    aPlayerButton.setPosition(position.x+70f,position.y + 35f)
+    aPlayerButton.setPosition(position.x + 70f, position.y + 35f)
 		
 	val cpuButton = new Sprite(Resources.cpuButton)
-    cpuButton.setPosition(position.x+30f,position.y - 0f )
+    cpuButton.setPosition(position.x + 30f, position.y - 0f )
 		
 	val playerButton = new Sprite(Resources.playerButton)
-	playerButton.setPosition(position.x+30f,position.y + 70f )
+	playerButton.setPosition(position.x + 30f, position.y + 70f )
 		
 	val pulse = (1 + MathUtils.cos(( pulse_time / 180f ) * 2f * MathUtils.PI )) / 2f
 	val color = fade * pulse + 1 * (1 - pulse)
@@ -78,20 +81,31 @@ class FactorySelector (starting_position: Vector2, id: Int) extends Sprite() {
 		
 		super.draw(batch)
 		
+        println("----------------------------------------")
+        println(id)
+        println(this.position)
+        val verts = getVertices()
+        for ( v <- verts ) { println(v) }
 		collisionMinVector.set(this.getVertices()(0), this.getVertices()(1), -10)
 		collisionMaxVector.set(this.getVertices()(10), this.getVertices()(11), 10)
+        println(collisionMinVector, collisionMaxVector)
 		collision.set(collisionMinVector,collisionMaxVector)
 		
+        val verts2 = getVertices()
+        for ( v <- verts2 ) { println(v) }
 		collisionMinVector.set(this.getVertices()(0), this.getVertices()(1), -10)
 		collisionMaxVector.set(this.getVertices()(10), this.getVertices()(11), 10)
-		collisionMinVector.y += ((this.getVertices()(11)-this.getVertices()(1))/2)
-		collisionPlayerSelect.set(collisionMinVector,collisionMaxVector)
+		collisionMinVector.y += ((this.getVertices()(11) - this.getVertices()(1)) / 2)
+        println(collisionMinVector, collisionMaxVector)
+		collisionPlayerSelect.set(collisionMinVector, collisionMaxVector)
 		
+        val verts3 = getVertices()
+        for ( v <- verts3 ) { println(v) }
 		collisionMinVector.set(this.getVertices()(0), this.getVertices()(1), -10)
 		collisionMaxVector.set(this.getVertices()(10), this.getVertices()(11), 10)
-		collisionMaxVector.y -= ((this.getVertices()(11)-this.getVertices()(1))/2)
+		collisionMaxVector.y -= ((this.getVertices()(11) - this.getVertices()(1)) / 2)
+        println(collisionMinVector, collisionMaxVector)
 		collisionCPUSelect.set(collisionMinVector,collisionMaxVector)
-		
 		
 		pulse_time = pulse_time + Gdx.graphics.getDeltaTime()
 
