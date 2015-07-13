@@ -81,30 +81,26 @@ class FactorySelector (starting_position: Vector2, id: Int) extends Sprite() {
 		
 		super.draw(batch)
 		
-        println("----------------------------------------")
-        println(id)
-        println(this.position)
-        val verts = getVertices()
-        for ( v <- verts ) { println(v) }
+        //println("menu id:" + id)
+        //println("vertices:")
+        //println(this.position)
+        //val verts = getVertices()
+        //for ( v <- verts ) { println(v) }
 		collisionMinVector.set(this.getVertices()(0), this.getVertices()(1), -10)
 		collisionMaxVector.set(this.getVertices()(10), this.getVertices()(11), 10)
-        println(collisionMinVector, collisionMaxVector)
+        //println(collisionMinVector, collisionMaxVector)
 		collision.set(collisionMinVector,collisionMaxVector)
 		
-        val verts2 = getVertices()
-        for ( v <- verts2 ) { println(v) }
 		collisionMinVector.set(this.getVertices()(0), this.getVertices()(1), -10)
 		collisionMaxVector.set(this.getVertices()(10), this.getVertices()(11), 10)
 		collisionMinVector.y += ((this.getVertices()(11) - this.getVertices()(1)) / 2)
-        println(collisionMinVector, collisionMaxVector)
+        //println(collisionMinVector, collisionMaxVector)
 		collisionPlayerSelect.set(collisionMinVector, collisionMaxVector)
 		
-        val verts3 = getVertices()
-        for ( v <- verts3 ) { println(v) }
 		collisionMinVector.set(this.getVertices()(0), this.getVertices()(1), -10)
 		collisionMaxVector.set(this.getVertices()(10), this.getVertices()(11), 10)
 		collisionMaxVector.y -= ((this.getVertices()(11) - this.getVertices()(1)) / 2)
-        println(collisionMinVector, collisionMaxVector)
+        //println(collisionMinVector, collisionMaxVector)
 		collisionCPUSelect.set(collisionMinVector,collisionMaxVector)
 		
 		pulse_time = pulse_time + Gdx.graphics.getDeltaTime()
