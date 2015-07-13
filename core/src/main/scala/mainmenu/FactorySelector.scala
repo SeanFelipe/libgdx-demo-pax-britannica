@@ -14,12 +14,33 @@ class FactorySelector (starting_position: Vector2, id: Int) extends Sprite() {
     println(s"id: $id position: $position")
 
 
+	var collision = new BoundingBox()
+	var collisionMinVector = new Vector3()
+	var collisionMaxVector = new Vector3()
+
     id match {
-        case 1 => this.set(Resources.factoryP1)
-        case 2 => this.set(Resources.factoryP2)
-        case 3 => this.set(Resources.factoryP3)
-        case _ => this.set(Resources.factoryP4)
+        case 1 => 
+            this.set(Resources.factoryP1)
+            collisionMinVector.set(205f, 120f, -10f)
+            collisionMaxVector.set(85f, 300f, 10f)
+            collision.set(collisionMinVector, collisionMaxVector);
+        case 2 => 
+            this.set(Resources.factoryP2)
+            collisionMinVector.set(330f, 120f, -10f)
+            collisionMaxVector.set(210f, 300f, 10f)
+            collision.set(collisionMinVector, collisionMaxVector);
+        case 3 => 
+            this.set(Resources.factoryP3)
+            collisionMinVector.set(455f, 120f, -10f)
+            collisionMaxVector.set(335f, 300f, 10f)
+            collision.set(collisionMinVector, collisionMaxVector);
+        case _ => 
+            this.set(Resources.factoryP4)
+            collisionMinVector.set(580f, 120f, -10f)
+            collisionMaxVector.set(460f, 300f, 10f)
+            collision.set(collisionMinVector, collisionMaxVector);
     }
+
     setRotation(90)
     this.setColor(0, 0, 0, 1)
 
@@ -28,11 +49,8 @@ class FactorySelector (starting_position: Vector2, id: Int) extends Sprite() {
 	var playerSelect = false
 	var cpuSelect = false
 
-	var collision = new BoundingBox()
 	var collisionPlayerSelect = new BoundingBox()
 	var collisionCPUSelect = new BoundingBox()
-	var collisionMinVector = new Vector3()
-	var collisionMaxVector = new Vector3()
 	
 	val button = new Sprite(Resources.aButton)
     button.setPosition(position.x + 70f, position.y + 35f)
@@ -80,28 +98,6 @@ class FactorySelector (starting_position: Vector2, id: Int) extends Sprite() {
 		delta = Math.min(0.06f, Gdx.graphics.getDeltaTime())
 		
 		super.draw(batch)
-		
-        //println("menu id:" + id)
-        //println("vertices:")
-        //println(this.position)
-        //val verts = getVertices()
-        //for ( v <- verts ) { println(v) }
-		collisionMinVector.set(this.getVertices()(0), this.getVertices()(1), -10)
-		collisionMaxVector.set(this.getVertices()(10), this.getVertices()(11), 10)
-        //println(collisionMinVector, collisionMaxVector)
-		collision.set(collisionMinVector,collisionMaxVector)
-		
-		collisionMinVector.set(this.getVertices()(0), this.getVertices()(1), -10)
-		collisionMaxVector.set(this.getVertices()(10), this.getVertices()(11), 10)
-		collisionMinVector.y += ((this.getVertices()(11) - this.getVertices()(1)) / 2)
-        //println(collisionMinVector, collisionMaxVector)
-		collisionPlayerSelect.set(collisionMinVector, collisionMaxVector)
-		
-		collisionMinVector.set(this.getVertices()(0), this.getVertices()(1), -10)
-		collisionMaxVector.set(this.getVertices()(10), this.getVertices()(11), 10)
-		collisionMaxVector.y -= ((this.getVertices()(11) - this.getVertices()(1)) / 2)
-        //println(collisionMinVector, collisionMaxVector)
-		collisionCPUSelect.set(collisionMinVector,collisionMaxVector)
 		
 		pulse_time = pulse_time + Gdx.graphics.getDeltaTime()
 
