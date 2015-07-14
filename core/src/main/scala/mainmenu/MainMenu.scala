@@ -231,8 +231,7 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 			countdown.reset()
 			oldCnt = cnt
 		}
-		if ((p1.picked && ! (p1.playerSelect || p1.cpuSelect)) || (p2.picked && ! (p2.playerSelect || p2.cpuSelect)) || (p3.picked
-				&& ! (p3.playerSelect || p3.cpuSelect)) || (p4.picked && ! (p4.playerSelect || p4.cpuSelect))) {
+		if ((p1.picked && ! (p1.playerSelect || p1.cpuSelect)) || (p2.picked && ! (p2.playerSelect || p2.cpuSelect)) || (p3.picked	&& ! (p3.playerSelect || p3.cpuSelect)) || (p4.picked && ! (p4.playerSelect || p4.cpuSelect))) {
 			countdown.reset()
 		}
 
@@ -413,11 +412,6 @@ class MainMenu (game: Game) extends DefaultScreen(game) with InputProcessor {
 		
 		if (cnt > 4 || countdown.finished)
 			return false	
-
-        println(p1.collision)
-        println(p2.collision)
-        println(p3.collision)
-        println(p4.collision)
 
 		// check if ship is activated
 		if (Intersector.intersectRayBoundsFast(collisionRay, p1.collision) && ! p1.picked) {

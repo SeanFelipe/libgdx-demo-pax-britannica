@@ -10,35 +10,34 @@ class FactorySelector (starting_position: Vector2, id: Int) extends Sprite() {
 
     var position = starting_position
     setPosition(position.x, position.y)
-    println("----------------------------------------")
     println(s"id: $id position: $position")
 
 
-	var collision = new BoundingBox()
-	var collisionMinVector = new Vector3()
-	var collisionMaxVector = new Vector3()
+	val collision = new BoundingBox()
+	var collisionPlayerSelect = new BoundingBox()
+	var collisionCPUSelect = new BoundingBox()
 
     id match {
         case 1 => 
             this.set(Resources.factoryP1)
-            collisionMinVector.set(205f, 120f, -10f)
-            collisionMaxVector.set(85f, 300f, 10f)
-            collision.set(collisionMinVector, collisionMaxVector);
+            setCollisions(1)
+            setCPUCollisions(1)
+            setPlayerCollisions(1)
         case 2 => 
             this.set(Resources.factoryP2)
-            collisionMinVector.set(330f, 120f, -10f)
-            collisionMaxVector.set(210f, 300f, 10f)
-            collision.set(collisionMinVector, collisionMaxVector);
+            setCollisions(2)
+            setCPUCollisions(2)
+            setPlayerCollisions(2)
         case 3 => 
             this.set(Resources.factoryP3)
-            collisionMinVector.set(455f, 120f, -10f)
-            collisionMaxVector.set(335f, 300f, 10f)
-            collision.set(collisionMinVector, collisionMaxVector);
+            setCollisions(3)
+            setCPUCollisions(3)
+            setPlayerCollisions(3)
         case _ => 
             this.set(Resources.factoryP4)
-            collisionMinVector.set(580f, 120f, -10f)
-            collisionMaxVector.set(460f, 300f, 10f)
-            collision.set(collisionMinVector, collisionMaxVector);
+            setCollisions(4)
+            setCPUCollisions(4)
+            setPlayerCollisions(4)
     }
 
     setRotation(90)
@@ -49,8 +48,6 @@ class FactorySelector (starting_position: Vector2, id: Int) extends Sprite() {
 	var playerSelect = false
 	var cpuSelect = false
 
-	var collisionPlayerSelect = new BoundingBox()
-	var collisionCPUSelect = new BoundingBox()
 	
 	val button = new Sprite(Resources.aButton)
     button.setPosition(position.x + 70f, position.y + 35f)
@@ -94,7 +91,67 @@ class FactorySelector (starting_position: Vector2, id: Int) extends Sprite() {
 		cpuButton.setColor(color, color, color, 1)	
 	}
 
-	override def draw(batch: Batch) {
+    def setCollisions(factoryNum: Int) {
+        val minVector = new Vector3()
+        val maxVector = new Vector3()
+        factoryNum match {
+            case 1 =>
+                minVector.set(205f, 120f, -10f)
+                maxVector.set(85f, 300f, 10f)
+            case 2 =>
+                minVector.set(330f, 120f, -10f)
+                maxVector.set(210f, 300f, 10f)
+            case 3 =>
+                minVector.set(455f, 120f, -10f)
+                maxVector.set(335f, 300f, 10f)
+            case _ => 
+                minVector.set(580f, 120f, -10f)
+                maxVector.set(460f, 300f, 10f)
+        }
+        collision.set(minVector, maxVector)
+    }
+
+    def setCPUCollisions(factoryNum: Int) {
+        val minVector = new Vector3()
+        val maxVector = new Vector3()
+        factoryNum match {
+            case 1 =>
+                minVector.set(205f, 120f, -10f)
+                maxVector.set(85f, 300f, 10f)
+            case 2 =>
+                minVector.set(330f, 120f, -10f)
+                maxVector.set(210f, 300f, 10f)
+            case 3 =>
+                minVector.set(455f, 120f, -10f)
+                maxVector.set(335f, 300f, 10f)
+            case _ => 
+                minVector.set(580f, 120f, -10f)
+                maxVector.set(460f, 300f, 10f)
+        }
+        collisionCPUSelect.set(minVector, maxVector)
+    }
+
+	def setPlayerCollisions(factoryNum: Int) {
+        val minVector = new Vector3()
+        val maxVector = new Vector3()
+        factoryNum match {
+            case 1 =>
+                minVector.set(205f, 120f, -10f)
+                maxVector.set(85f, 300f, 10f)
+            case 2 =>
+                minVector.set(330f, 120f, -10f)
+                maxVector.set(210f, 300f, 10f)
+            case 3 =>
+                minVector.set(455f, 120f, -10f)
+                maxVector.set(335f, 300f, 10f)
+            case _ => 
+                minVector.set(580f, 120f, -10f)
+                maxVector.set(460f, 300f, 10f)
+        }
+        collisionPlayerSelect.set(minVector, maxVector)
+    }
+    
+    override def draw(batch: Batch) {
 		delta = Math.min(0.06f, Gdx.graphics.getDeltaTime())
 		
 		super.draw(batch)
@@ -104,7 +161,7 @@ class FactorySelector (starting_position: Vector2, id: Int) extends Sprite() {
 		val pulse = (1 + MathUtils.cos(( pulse_time / 5f ) * 2f * MathUtils.PI )) / 2f
 		val color = fade * pulse + 1 * ( 1 - pulse )
 				
-		if(picked && !(playerSelect || cpuSelect)) {
+		if(picked && ! (playerSelect || cpuSelect)) {
 			button.draw(batch)
 			button.setColor(0.2f, 0.2f, 0.2f, 1)
 		} else {
@@ -120,7 +177,7 @@ class FactorySelector (starting_position: Vector2, id: Int) extends Sprite() {
 			}
 		}
 		
-		if(picked && !(playerSelect || cpuSelect)) {
+		if(picked && ! (playerSelect || cpuSelect)) {
 			fade = 0.2f
 		    this.setColor(fade, fade, fade, 1)
 			
@@ -131,7 +188,7 @@ class FactorySelector (starting_position: Vector2, id: Int) extends Sprite() {
 			playerButton.setColor(fadeButton, fadeButton, fadeButton, 1)
 		    playerButton.draw(batch)
 
-		} else if(playerSelect || cpuSelect) {
+		} else if (playerSelect || cpuSelect) {
 		    fade = Math.min(fade + delta, 1)
 		    this.setColor(fade, fade, fade, 1)
 		    
