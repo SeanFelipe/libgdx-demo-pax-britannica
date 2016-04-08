@@ -185,7 +185,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         } else if(numPlayers > 0 && pl0 == 3) {
             p1 = Resources.factoryP3Small
         } else if(numPlayers>0 && pl0 == 4) {
-            p1 = Resources.factoryP4Small		
+            p1 = Resources.factoryP4Small       
         }
 
         val pl1 = playerList.get(1)
@@ -196,7 +196,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         } else if(numPlayers > 1 && pl1 == 3) {
             p2 = Resources.factoryP3Small
         } else if(numPlayers > 1 && pl1 == 4) {
-            p2 = Resources.factoryP4Small		
+            p2 = Resources.factoryP4Small       
         }
 
         val pl2 = playerList.get(2)
@@ -207,7 +207,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         } else if(numPlayers > 2 && pl2 == 3) {
             p3 = Resources.factoryP3Small
         } else if(numPlayers > 2 && pl2 == 4) {
-            p3 = Resources.factoryP4Small		
+            p3 = Resources.factoryP4Small       
         }
 
         val pl3 = playerList.get(3)
@@ -218,7 +218,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         } else if(numPlayers > 3 && pl3 == 3) {
             p4 = Resources.factoryP3Small
         } else if(numPlayers > 3 && pl3 == 4) {
-            p4 = Resources.factoryP4Small		
+            p4 = Resources.factoryP4Small       
         }
 
         if(numPlayers > 0) p1.setScale(.2f)
@@ -289,7 +289,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
     override def render(a_delta: Float) {
         val delta = Math.min(0.06f, a_delta)
 
-        backgroundFX.render		
+        backgroundFX.render     
 
         Collision.collisionCheck
 
@@ -357,7 +357,7 @@ class GameScreen ( game: Game, playerList: Array[Integer], cpuList: Array[Intege
         GameInstance.sparkParticles.draw(gameBatch)
         GameInstance.explosionParticles.draw(gameBatch)
 
-        //		font.draw(gameBatch, "fps: " + Gdx.graphics.getFramesPerSecond(), 10, 30)
+        //      font.draw(gameBatch, "fps: " + Gdx.graphics.getFramesPerSecond(), 10, 30)
         gameBatch.end()
 
         //show touch area notification

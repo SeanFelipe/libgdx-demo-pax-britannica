@@ -73,7 +73,8 @@ class Ship (iid: Int, pposition: Vector2, ffacing: Vector2, hp: Int = 0) extends
     }
 
     def randomPointOnShip() : Vector2 = {
-        return new Vector2(collisionCenter.x + MathUtils.random(-this.getWidth() / 2, this.getWidth() / 2), collisionCenter.y + MathUtils.random(-this.getHeight() / 2, this.getHeight() / 2))
+        return new Vector2(collisionCenter.x + MathUtils.random(-this.getWidth() / 2, this.getWidth() / 2), 
+            collisionCenter.y + MathUtils.random(-this.getHeight() / 2, this.getHeight() / 2));
     }
 
     def goTowardsOrAway(targetPos: Vector2, forceThrust: Boolean, isAway: Boolean) {

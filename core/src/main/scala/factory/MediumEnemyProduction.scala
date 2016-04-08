@@ -11,5 +11,5 @@ class MediumEnemyProduction (id: Int , position: Vector2 , facing: Vector2 )
             else if(ownBombers < 4) action = 1
             else if(ownFrigates < 3) action = 2
             else action = 3
-	}
+    }
 }

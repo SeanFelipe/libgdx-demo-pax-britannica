@@ -8,7 +8,7 @@ import srg.scala.paxbritannica.{ GameInstance, Resources, Ship }
 class Bomber (id: Int, position: Vector2, facing: Vector2)
     extends Ship (id, position, facing, 440) {
 
-	val ai = new BomberAI(this)
+    val ai = new BomberAI(this)
 
     override val turnSpeed = 45f
     override val accel = 45.0f
@@ -22,13 +22,13 @@ class Bomber (id: Int, position: Vector2, facing: Vector2)
 
     this.setOrigin(this.getWidth() / 2, this.getHeight() / 2)
 
-	override def draw(batch: Batch) {
-		ai.update()
-		super.draw(batch)
-	}
+    override def draw(batch: Batch) {
+        ai.update()
+        super.draw(batch)
+    }
 
-	def shoot(approach: Int) {
-		 val bombFacing = new Vector2().set(facing).rotate(90 * approach)
-		 GameInstance.bullets.add(new Bomb(id, collisionCenter, bombFacing))
-	}
+    def shoot(approach: Int) {
+         val bombFacing = new Vector2().set(facing).rotate(90 * approach)
+         GameInstance.bullets.add(new Bomb(id, collisionCenter, bombFacing))
+    }
 }

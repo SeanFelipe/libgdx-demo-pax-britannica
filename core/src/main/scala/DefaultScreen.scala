@@ -4,18 +4,18 @@ import com.badlogic.gdx.Game
 import com.badlogic.gdx.Screen
 
 abstract class DefaultScreen (ggame: Game ) extends Screen {
-	val game = ggame
+    val game = ggame
 
-	override def resize(width: Int , height: Int ) {
-	}
+    override def resize(width: Int , height: Int ) {
+    }
 
-	override def pause() {
-	}
+    override def pause() {
+    }
 
-	override def resume() { 
-	}
+    override def resume() { 
+    }
 
-	override def dispose() {
-	}
-	
+    override def dispose() {
+    }
+    
 }

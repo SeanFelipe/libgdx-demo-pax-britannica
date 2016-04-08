@@ -14,5 +14,5 @@ class HardEnemyProduction (id: Int , position: Vector2 , facing: Vector2 )
             else if(ownFrigates < 1) action = 2
             else if(ownFighters < 10) action = 0
             else if(ownBombers > 4 && ownFrigates >= 1 && ownFighters >= 10) action = 3
-	}
+    }
 }

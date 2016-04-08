@@ -17,27 +17,27 @@ class Production (ffactory: FactoryProduction ) {
 
     // TODO: probably messed up an else clause in scale_angle or one of those spots
 
-	val BUILDING_SPEED = 100
-	val MAXSHIPS = 100
-	val SEGMENTS = 32f
-	val RADIUS = 32f
-	val DRAW_OFFSET = -4f
-	val SPAWN_OFFSET = 47f
+    val BUILDING_SPEED = 100
+    val MAXSHIPS = 100
+    val SEGMENTS = 32f
+    val RADIUS = 32f
+    val DRAW_OFFSET = -4f
+    val SPAWN_OFFSET = 47f
 
-	var fighterCost = 50f
-	var bomberCost = 170f
-	var frigateCost = 360f
-	var upgradeCost = 1080f
-	var potential_cost = 0f
-	var needle_angle = 0f
-	var needle_velocity = 0f
+    var fighterCost = 50f
+    var bomberCost = 170f
+    var frigateCost = 360f
+    var upgradeCost = 1080f
+    var potential_cost = 0f
+    var needle_angle = 0f
+    var needle_velocity = 0f
 
-	val facing90 = new Vector2()
-	var halt_production = false
-	var currentBuildingUnit = -1
-	var fade = 0f
+    val facing90 = new Vector2()
+    var halt_production = false
+    var currentBuildingUnit = -1
+    var fade = 0f
 
-	val factory = ffactory
+    val factory = ffactory
 
     val needle = Resources.needle
     needle.setOrigin(needle.getHeight() / 2, needle.getWidth() / 2)
@@ -181,7 +181,7 @@ class Production (ffactory: FactoryProduction ) {
 
         production_tile1.setRotation(factory.facing.angle())
         production_tile1.setPosition(factory.collisionCenter.x - (35 * factory.facing.x) - (32* facing90.x), 
-            factory.collisionCenter.y	- (35 * factory.facing.y) - (32 * facing90.y));
+            factory.collisionCenter.y   - (35 * factory.facing.y) - (32 * facing90.y));
         production_tile1.draw(batch)
 
         angle = Math.min(1, Math.max(0, norm(scale_angle(factory.resourceAmount),0.25f,0.5f)))
@@ -191,7 +191,7 @@ class Production (ffactory: FactoryProduction ) {
 
         production_tile2.setRotation(factory.facing.angle())
         production_tile2.setPosition(factory.collisionCenter.x - (35 * factory.facing.x) - (32 * facing90.x), 
-            factory.collisionCenter.y	- (35 * factory.facing.y) - (32 * facing90.y));
+            factory.collisionCenter.y   - (35 * factory.facing.y) - (32 * facing90.y));
         production_tile2.draw(batch)
 
         angle = Math.min(1, Math.max(0, norm(scale_angle(factory.resourceAmount),0.5f,0.75f)))
@@ -201,7 +201,7 @@ class Production (ffactory: FactoryProduction ) {
 
         production_tile3.setRotation(factory.facing.angle())
         production_tile3.setPosition(factory.collisionCenter.x - (35* factory.facing.x)- (32 * facing90.x), 
-            factory.collisionCenter.y	- (35 * factory.facing.y) - (32 * facing90.y));
+            factory.collisionCenter.y   - (35 * factory.facing.y) - (32 * facing90.y));
         production_tile3.draw(batch)
 
         angle = Math.min(1, Math.max(0, norm(scale_angle(factory.resourceAmount),0.75f,1f)))
@@ -211,7 +211,7 @@ class Production (ffactory: FactoryProduction ) {
 
         production_tile4.setRotation(factory.facing.angle())
         production_tile4.setPosition(factory.collisionCenter.x - (35 * factory.facing.x)- (32 * facing90.x), 
-            factory.collisionCenter.y	- (35* factory.facing.y) - (32 * facing90.y));
+            factory.collisionCenter.y   - (35* factory.facing.y) - (32 * facing90.y));
         production_tile4.draw(batch)
 
         // Draw the needle
@@ -231,20 +231,20 @@ class Production (ffactory: FactoryProduction ) {
 
         needle.setOrigin(0, 0)
         needle.setPosition(factory.collisionCenter.x - (2 * factory.facing.x) - (-2 * facing90.x), 
-            factory.collisionCenter.y	- (2 * factory.facing.y) - (-2 * facing90.y));
+            factory.collisionCenter.y   - (2 * factory.facing.y) - (-2 * facing90.y));
         needle.setRotation(factory.facing.angle() + ((-needle_angle) * 360) - 90)
         needle.draw(batch)
 
         production2.setOrigin(0, 0)
         production2.setRotation(factory.facing.angle())
         production2.setPosition(factory.collisionCenter.x - (35 * factory.facing.x) - (32 * facing90.x), 
-            factory.collisionCenter.y	- (35 * factory.facing.y) - (32 * facing90.y));
+            factory.collisionCenter.y   - (35 * factory.facing.y) - (32 * facing90.y));
         production2.draw(batch)
 
         production3.setOrigin(0, 0)
         production3.setRotation(factory.facing.angle())
         production3.setPosition(factory.collisionCenter.x - (35 * factory.facing.x) - (32 * facing90.x), 
-            factory.collisionCenter.y	- (35 * factory.facing.y) - (32 * facing90.y));
+            factory.collisionCenter.y   - (35 * factory.facing.y) - (32 * facing90.y));
         production3.draw(batch)
 
 

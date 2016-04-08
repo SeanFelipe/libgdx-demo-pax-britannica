@@ -7,3 +7,4 @@ project/plugins/project
 bin/
 gen/
 *.swp
+.DS_Store

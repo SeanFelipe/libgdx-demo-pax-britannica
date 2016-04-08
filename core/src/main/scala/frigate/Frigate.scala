@@ -9,14 +9,14 @@ import srg.scala.paxbritannica.{ GameInstance, Resources, Ship }
 class Frigate (id: Int, position: Vector2 , facing: Vector2 ) 
     extends Ship (id, position, facing, 2000) {
 
-	val shotCooldownTime = 5
-	val shotCapacity = 8
-	val shotReloadRate = 1f
+    val shotCooldownTime = 5
+    val shotCapacity = 8
+    val shotReloadRate = 1f
 
-	var shots = 0
-	var cooldown = 0
-	
-	val ai = new FrigateAI(this)
+    var shots = 0
+    var cooldown = 0
+    
+    val ai = new FrigateAI(this)
 
     override val turnSpeed = 20f
     override val accel = 14.0f

@@ -18,26 +18,26 @@ class FactoryProduction (iid: Int , pposition: Vector2 , ffacing: Vector2 )
     override val turnSpeed = 2.0f
     override val accel = 5.0f
 
-	var harvestRate = 40f
-	var harvestRateUpgrade = 15f
-	var upgradesUsed = 0f
-	var resourceAmount = 20f
-	
-	var ownShips = 0
-	var button_held = false
-	var drawDamage = false
+    var harvestRate = 40f
+    var harvestRateUpgrade = 15f
+    var upgradesUsed = 0f
+    var resourceAmount = 20f
+    
+    var ownShips = 0
+    var button_held = false
+    var drawDamage = false
 
     if(GameInstance.factoryHealthConfig == 0) {
         hitPoints = 25000
-		} else if(GameInstance.factoryHealthConfig == 1) {
-		    hitPoints = 45000
-		} else {
-		    hitPoints = 65000
-		}
+        } else if(GameInstance.factoryHealthConfig == 1) {
+            hitPoints = 45000
+        } else {
+            hitPoints = 65000
+        }
     maxHitPoints = hitPoints
 
-	val production = new Production(this)
-    val	facing90 = new Vector2()
+    val production = new Production(this)
+    val facing90 = new Vector2()
 
     iid match  {
         case 1 => this.set(Resources.factoryP1)
@@ -46,7 +46,7 @@ class FactoryProduction (iid: Int , pposition: Vector2 , ffacing: Vector2 )
         case _ => this.set(Resources.factoryP4)
     }
 
-	val light_damage1 = new Sprite()
+    val light_damage1 = new Sprite()
     val light_damage2 = new Sprite()
     val light_damage3 = new Sprite()
     val heavy_damage1 = new Sprite()
@@ -61,47 +61,47 @@ class FactoryProduction (iid: Int , pposition: Vector2 , ffacing: Vector2 )
     var current_damage = light_damage1
 
     this.setOrigin(this.getWidth() / 2, this.getHeight() / 2)
-		
-	override def draw(batch: Batch ) {
-		delta = Math.min(0.06f, Gdx.graphics.getDeltaTime())
-		
-		resourceAmount = Math.min(2000, resourceAmount + (harvestRate * delta))
-		super.draw(batch)
-		production.draw(batch)
+        
+    override def draw(batch: Batch ) {
+        delta = Math.min(0.06f, Gdx.graphics.getDeltaTime())
+        
+        resourceAmount = Math.min(2000, resourceAmount + (harvestRate * delta))
+        super.draw(batch)
+        production.draw(batch)
 
-		// Damage
-		// ugh. . . sprite needs to be more flexible
-		drawDamage = false
-		val health = healthPercentage
-		val animation = (Math.floor(aliveTime * 20) % 3 + 1).toInt
+        // Damage
+        // ugh. . . sprite needs to be more flexible
+        drawDamage = false
+        val health = healthPercentage
+        val animation = (Math.floor(aliveTime * 20) % 3 + 1).toInt
 
-		if (health < Constants.lowHealthThreshold) {
-			animation match {
+        if (health < Constants.lowHealthThreshold) {
+            animation match {
                 case 1 => current_damage = heavy_damage1
                 case 2 => current_damage = heavy_damage2
                 case _ => current_damage = heavy_damage3
-			}
-			drawDamage = true
-		} else if (health < Constants.highHealthThreshold) {
-			animation match {
+            }
+            drawDamage = true
+        } else if (health < Constants.highHealthThreshold) {
+            animation match {
                 case 1 => current_damage = light_damage1
                 case 2 => current_damage = light_damage2
                 case _ => current_damage = light_damage3
-			}
-			drawDamage = true
-		}
-		
-		if(drawDamage) {
-			facing90.set(facing)
-			facing90.rotate(90).nor()
+            }
+            drawDamage = true
+        }
+        
+        if(drawDamage) {
+            facing90.set(facing)
+            facing90.rotate(90).nor()
 
-			current_damage.setOrigin(0, 0)
-			current_damage.setPosition(collisionCenter.x - (90 * facing.x) - (60 * facing90.x), collisionCenter.y - (90 * facing.y)
-					- (60 * facing90.y))
-			current_damage.setRotation(facing.angle())
-			current_damage.setColor(1, 1, 1, MathUtils.random())
-			current_damage.draw(batch)
-		}
-	}
+            current_damage.setOrigin(0, 0)
+            current_damage.setPosition(collisionCenter.x - (90 * facing.x) - (60 * facing90.x), collisionCenter.y - (90 * facing.y)
+                    - (60 * facing90.y))
+            current_damage.setRotation(facing.angle())
+            current_damage.setColor(1, 1, 1, MathUtils.random())
+            current_damage.draw(batch)
+        }
+    }
 
 }
